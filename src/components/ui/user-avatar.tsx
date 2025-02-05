@@ -26,6 +26,10 @@ export default function UserAvatar({
       height={size}
     />
   ) : (
-    <User className={`!~size-4/8 ${classNew}`} />
+    <div
+      className={`${classNew} !~size-4/8 dark:bg-gray-600 border dark:border-white border-gray-300 p-1`}
+    >
+      <User className="!size-full" />
+    </div>
   );
 }

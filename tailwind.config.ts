@@ -64,6 +64,9 @@ export default {
           main: '#A5D8FF',
           second: '#afd0d6',
         },
+        bg: {
+          main: 'var(--bg-main)',
+        },
       },
       fontFamily: {
         'font-nunito': 'var(--font-nunito)',

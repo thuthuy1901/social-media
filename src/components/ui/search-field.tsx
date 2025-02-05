@@ -16,9 +16,14 @@ export default function SearchField() {
     router.push(`/search?search=${encodeURIComponent(search)}`);
   }
   return (
-    <form onSubmit={handleSubmit} method="GET" action="/search">
+    <form
+      onSubmit={handleSubmit}
+      method="GET"
+      action="/search"
+      className="flex items-center"
+    >
       <div className="relative">
-        <Input name="search" placeholder="Search" className="" />
+        <Input name="search" placeholder="Search" className="~h-7/9" />
         <Search className="absolute right-0 top-0 h-full size-5 pr-2" />
       </div>
     </form>

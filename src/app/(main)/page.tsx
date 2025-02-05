@@ -1,9 +1,11 @@
-import Navbar from './Navbar';
+import PostEditor from '@/components/posts/editor/PostEditor';
 
 export default function Home() {
   return (
-    <main className="">
-      <Navbar />
+    <main className="w-full">
+      <div className="">
+        <PostEditor />
+      </div>
     </main>
   );
 }

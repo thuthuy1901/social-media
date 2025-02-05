@@ -1,21 +1,12 @@
 import SearchField from '@/components/ui/search-field';
 import UserButton from '@/components/ui/user-button';
-import Image from 'next/image';
-import Link from 'next/link';
+import Logo from './logo';
 
 export default function Navbar() {
   return (
-    <header className="bg-white sticky top-0 px-2">
+    <header className="bg-white dark:bg-white/10 sticky top-0 px-2 border-b dark:border-white/50 shadow-md dark:shadow-white/30 backdrop-blur-sm z-50">
       <div className="container mx-auto flex justify-between ~py-1/2">
-        <Link href="/">
-          <Image
-            src="/logo.png"
-            alt="logo icon"
-            width={200}
-            height={100}
-            className="object-contain ~w-8/16 h-auto"
-          />
-        </Link>
+        <Logo />
         <SearchField />
         <UserButton />
       </div>

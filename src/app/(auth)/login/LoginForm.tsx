@@ -49,7 +49,7 @@ const FormLogin = () => {
               <FormControl>
                 <Input
                   placeholder="Username"
-                  className="text-green-main font-medium placeholder:text-green-main/50"
+                  className="text-green-main font-medium"
                   {...field}
                 />
               </FormControl>
@@ -66,7 +66,7 @@ const FormLogin = () => {
               <FormControl>
                 <PasswordInput
                   placeholder="Password"
-                  className="text-green-main font-medium placeholder:text-green-main/50"
+                  className="text-green-main font-medium"
                   {...field}
                 />
               </FormControl>

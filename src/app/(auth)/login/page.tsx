@@ -16,14 +16,14 @@ export default function Page() {
         fill
         className="object-cover -z-10"
       />
-      <section className="h-fit ~py-2/5 ~px-2/10 bg-white/40 border border-white ~rounded-xl/2xl w-[90%] max-w-[500px] mx-auto">
+      <section className="h-fit ~py-2/5 ~px-2/10 bg-white/40 dark:bg-black/30 border border-white dark:border-white/50 ~rounded-xl/2xl w-[90%] max-w-[500px] mx-auto">
         <h1 className="text-white text-center">Login</h1>
         <FormLogin />
         <p className="text-center text-sm group">
           Dont have account?{' '}
           <Link
             href="/signup"
-            className="italic text-green-second font-bold group-hover:text-green-main"
+            className="italic text-green-second font-bold group-hover:text-green-main dark:group-hover:text-white/50"
           >
             Sign in
           </Link>
