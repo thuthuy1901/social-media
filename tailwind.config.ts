@@ -56,10 +56,14 @@ export default {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
-        'green-main': '#123436',
-        'green-second': '#C0C999',
-        'blue-main': '#A5D8FF',
-        'blue-second': '#afd0d6',
+        green: {
+          main: '#123436',
+          second: '#C0C999',
+        },
+        blue: {
+          main: '#A5D8FF',
+          second: '#afd0d6',
+        },
       },
       fontFamily: {
         'font-nunito': 'var(--font-nunito)',

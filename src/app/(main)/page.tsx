@@ -1,3 +1,9 @@
+import Navbar from './Navbar';
+
 export default function Home() {
-  return <div>tesst</div>;
+  return (
+    <main className="">
+      <Navbar />
+    </main>
+  );
 }
