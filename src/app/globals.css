@@ -34,6 +34,7 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --bg-main: #ffffff;
+    --text-main: '#123436';
   }
 
   .dark {
@@ -62,9 +63,10 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
     --bg-main: rgb(255 255 255 / 0.2);
+    --text-main: #c0c999;
   }
   * {
-    @apply border-border;
+    @apply border-border dark:!shadow-white/30 dark:!border-white/50;
   }
   body {
     @apply bg-background text-foreground;
@@ -102,4 +104,22 @@ input::-ms-clear {
 
 .dark .tiptap p.is-editor-empty:first-child::before {
   color: #fff;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

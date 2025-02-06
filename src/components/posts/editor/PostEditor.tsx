@@ -33,7 +33,7 @@ export default function PostEditor() {
 
   return (
     <div>
-      <div className="rounded-md border bg-bg-main ~p-3/5 shadow-md dark:shadow-white/30 dark:border-white/50">
+      <div className="rounded-md border bg-bg-main ~p-3/5 shadow-md">
         <div className="flex items-center gap-5">
           <UserAvatar avatarUrl={user.avatarUrl} className="max-sm:hidden" />
           <EditorContent

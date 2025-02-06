@@ -67,6 +67,9 @@ export default {
         bg: {
           main: 'var(--bg-main)',
         },
+        text: {
+          title: 'var(--text-main)',
+        },
       },
       fontFamily: {
         'font-nunito': 'var(--font-nunito)',
