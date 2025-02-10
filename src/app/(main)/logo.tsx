@@ -7,7 +7,7 @@ const Logo = () => {
   const { resolvedTheme } = useTheme();
 
   return (
-    <Link href="/" title="logo">
+    <Link href="/" title="logo" className="flex">
       <Image
         src={resolvedTheme === 'light' ? '/logo.png' : '/logo-light.png'}
         alt="logo icon"
