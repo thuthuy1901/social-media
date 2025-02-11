@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss';
 import fluid, { extract, screens, fontSize } from 'fluid-tailwind';
+import plugin from 'tailwindcss/plugin';
 
 export default {
   darkMode: ['class'],
@@ -81,5 +82,18 @@ export default {
       },
     },
   },
-  plugins: [fluid],
+  plugins: [
+    fluid,
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          '-ms-overflow-style': 'none',
+          'scrollbar-width': 'none',
+          '&::-webkit-scrollbar': {
+            display: 'none',
+          },
+        },
+      });
+    }),
+  ],
 } satisfies Config;

@@ -7,16 +7,15 @@ import UserAvatar from './user-avatar';
 import Link from 'next/link';
 import { Button } from './button';
 import { unstable_cache } from 'next/cache';
+import { formatNumber } from '@/lib/utils';
 
 export default function TrendSidebar() {
   return (
-    <section className="sticky top-[5.25rem] h-fit hidden md:block lg:w-80 w-72">
+    <section className="sticky top-[5.25rem] h-fit hidden md:block lg:w-80 w-72 max-h-[calc(100vh-80px)] overflow-y-auto scrollbar-hide">
       <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
         <WhoToFollow />
-      </Suspense>
-      {/* <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
         <TrendingTopics />
-      </Suspense> */}
+      </Suspense>
     </section>
   );
 }
@@ -73,16 +72,16 @@ async function WhoToFollow() {
 const getTrendingTopics = unstable_cache(
   async () => {
     const result = await prisma.$queryRaw<{ hashtag: string; count: bigint }[]>`
-    SELECT LOWER(unnest(regexp_matches(content, '#[[:alnum]_]+', 'g'))) AS hashtag, COUNT(*) AS count
-    FROM posts
-    GROUP BY(hashtag)
-    ORDER BY count DESC, hashtag ASC
-    LIMIT 5
-  `;
+            SELECT LOWER(unnest(regexp_matches(content, '#[[:alnum:]_]+', 'g'))) AS hashtag, COUNT(*) AS count
+            FROM posts
+            GROUP BY (hashtag)
+            ORDER BY count DESC, hashtag ASC
+            LIMIT 5
+        `;
 
     return result.map((row) => ({
       hashtag: row.hashtag,
-      count: Number(row.hashtag),
+      count: Number(row.count),
     }));
   },
   ['trending_topics'],
@@ -91,7 +90,27 @@ const getTrendingTopics = unstable_cache(
   },
 );
 
-// async function TrendingTopics() {
-//   const trendingTopics = await getTrendingTopics();
-//   return <div>tesst</div>;
-// }
+async function TrendingTopics() {
+  const trendingTopics = await getTrendingTopics();
+  console.log(trendingTopics);
+  return (
+    <div className="~mt-3/6 bg-bg-main border rounded-md shadow-md ~p-3/5">
+      <h3 className="text-xl font-bold">Trending Topics</h3>
+      <div className="space-y-2 pt-2">
+        {trendingTopics.map(({ hashtag, count }) => {
+          const title = hashtag.split('#')[1];
+          return (
+            <Link href={`/hastag/${title}`} key={title} className="block">
+              <p className="font-bold text-text-title capitalize line-clamp-1 break-all hover:underline">
+                {hashtag}
+              </p>
+              <p className="text-xs text-gray-400 line-clamp-1 break-all">
+                {formatNumber(count)} {count === 1 ? 'post' : 'posts'}
+              </p>
+            </Link>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
