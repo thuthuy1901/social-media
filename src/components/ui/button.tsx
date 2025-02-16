@@ -25,6 +25,7 @@ const buttonVariants = cva(
       size: {
         default: '~py-1/2 ~px-2/5',
         small: 'py-1 px-3',
+        clear: '',
       },
     },
     defaultVariants: {

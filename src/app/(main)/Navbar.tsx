@@ -1,5 +1,5 @@
 import SearchField from '@/components/ui/search-field';
-import UserButton from '@/components/ui/user-button';
+import UserButton from '@/components/user-button';
 import Logo from './logo';
 
 export default function Navbar() {

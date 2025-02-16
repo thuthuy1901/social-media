@@ -12,8 +12,8 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from './dropdown-menu';
-import { Button } from './button';
+} from './ui/dropdown-menu';
+import { Button } from './ui/button';
 import UserAvatar from './user-avatar';
 import Link from 'next/link';
 import {
@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { logout } from '@/app/(auth)/action';
 import { useTheme } from 'next-themes';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface UserButtonProps {
   className?: string;
@@ -36,8 +37,10 @@ export default function UserButton({}: UserButtonProps) {
   const { user } = useSession();
   const { setTheme, theme } = useTheme();
 
+  const queryClient = useQueryClient();
+
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button>
           <UserAvatar avatarUrl={user.avatarUrl} />
@@ -80,7 +83,12 @@ export default function UserButton({}: UserButtonProps) {
           </DropdownMenuPortal>
         </DropdownMenuSub>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={() => logout()}>
+        <DropdownMenuItem
+          onClick={() => {
+            queryClient.clear();
+            logout();
+          }}
+        >
           <ArrowRightFromLine /> Log out
         </DropdownMenuItem>
       </DropdownMenuContent>

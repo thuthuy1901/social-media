@@ -5,7 +5,7 @@ import { Loader2 } from 'lucide-react';
 import { Suspense } from 'react';
 import UserAvatar from './user-avatar';
 import Link from 'next/link';
-import { Button } from './button';
+import { Button } from './ui/button';
 import { unstable_cache } from 'next/cache';
 import { formatNumber } from '@/lib/utils';
 
@@ -92,7 +92,6 @@ const getTrendingTopics = unstable_cache(
 
 async function TrendingTopics() {
   const trendingTopics = await getTrendingTopics();
-  console.log(trendingTopics);
   return (
     <div className="~mt-3/6 bg-bg-main border rounded-md shadow-md ~p-3/5">
       <h3 className="text-xl font-bold">Trending Topics</h3>
