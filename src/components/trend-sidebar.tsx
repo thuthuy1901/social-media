@@ -8,10 +8,11 @@ import Link from 'next/link';
 import { Button } from './ui/button';
 import { unstable_cache } from 'next/cache';
 import { formatNumber } from '@/lib/utils';
+import FollowButton from './follow-button';
 
 export default function TrendSidebar() {
   return (
-    <section className="sticky top-[5.25rem] h-fit hidden md:block lg:w-80 w-72 max-h-[calc(100vh-80px)] overflow-y-auto scrollbar-hide">
+    <section className="sticky top-[5.25rem] h-fit hidden md:block lg:w-80 w-72 max-h-[calc(100vh-80px)] overflow-y-auto scrollbar-hide pb-2.5">
       <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
         <WhoToFollow />
         <TrendingTopics />
@@ -55,13 +56,7 @@ async function WhoToFollow() {
                 </p>
               </div>
             </Link>
-            <Button
-              variant="dotted"
-              size="small"
-              className="capitalize font-semibold text-xs"
-            >
-              Follow
-            </Button>
+            {/* <FollowButton userId={user.id} initialState={{followers:}}/> */}
           </div>
         ))}
       </div>

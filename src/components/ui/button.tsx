@@ -12,6 +12,8 @@ const buttonVariants = cva(
         default: '',
         dotted:
           '~rounded-xl/2xl border-2 border-dashed border-green-main dark:border-white/50 bg-white dark:bg-white/10 font-semibold uppercase text-black dark:text-white transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none',
+        dottedRadius:
+          'hover:~rounded-xl/2xl rounded-md border-2 border-dashed border-green-main dark:border-white/50 bg-white dark:bg-white/10 font-semibold uppercase text-black dark:text-white transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none',
         rightToLeft:
           "relative border-2 border-gray-800 bg-transparent font-medium uppercase text-gray-800 transition-colors before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:origin-top-left before:scale-x-0 before:bg-gray-800 before:transition-transform before:duration-300 before:content-[''] hover:text-white before:hover:scale-x-100",
         topToBottom:
