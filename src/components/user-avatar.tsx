@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { User } from 'lucide-react';
+import { UserRound } from 'lucide-react';
 import Image from 'next/image';
 
 interface UserAvatarProps {
@@ -27,9 +27,9 @@ export default function UserAvatar({
     />
   ) : (
     <div
-      className={`${classNew} size-8 dark:bg-gray-600 border dark:border-white border-gray-300 p-1`}
+      className={`${classNew} size-8 dark:bg-gray-600 border dark:border-white border-gray-300 p-1 overflow-hidden`}
     >
-      <User className="!size-full" />
+      <UserRound className="!size-full" />
     </div>
   );
 }
