@@ -1,3 +1,4 @@
+import { useSession } from '@/app/(main)/SessionProvider';
 import { PostsPage } from '@/lib/types';
 import {
   InfiniteData,
@@ -5,29 +6,34 @@ import {
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query';
-import { submitPost } from './action';
 import { useToast } from '@/hooks/use-toast';
+import { submitPost } from './action';
 
 export function useSubmitPostMutation() {
   const { toast } = useToast();
 
   const queryClient = useQueryClient();
 
+  const { user } = useSession();
+
   const mutation = useMutation({
     mutationFn: submitPost,
     onSuccess: async (newPost) => {
-      const queryFilter: QueryFilters<
-        InfiniteData<PostsPage, string | null>,
-        Error,
-        InfiniteData<PostsPage, string | null>,
-        readonly unknown[]
-      > = {
-        queryKey: ['post-feed', 'for-you'],
-      };
+      const queryFilter = {
+        queryKey: ['post-feed'],
+        predicate(query) {
+          return (
+            query.queryKey.includes('for-you') ||
+            (query.queryKey.includes('user-posts') &&
+              query.queryKey.includes(user.id))
+          );
+        },
+      } satisfies QueryFilters;
 
       await queryClient.cancelQueries(queryFilter);
 
       queryClient.setQueriesData<InfiniteData<PostsPage, string | null>>(
+        // @ts-expect-error Type mismatch due to QueryFilters generic type
         queryFilter,
         (oldData) => {
           const firstPage = oldData?.pages[0];
@@ -50,7 +56,7 @@ export function useSubmitPostMutation() {
       queryClient.invalidateQueries({
         queryKey: queryFilter.queryKey,
         predicate(query) {
-          return !query.state.data;
+          return queryFilter.predicate(query) && !query.state.data;
         },
       });
 
@@ -62,7 +68,7 @@ export function useSubmitPostMutation() {
       console.error(error);
       toast({
         variant: 'destructive',
-        description: 'Failed to create post. Please try again.',
+        description: 'Failed to post. Please try again.',
       });
     },
   });

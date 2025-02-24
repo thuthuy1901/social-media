@@ -57,7 +57,7 @@ export default function FollowButton({
     <Button
       variant={data.isFollowedByUser ? 'dotted' : 'dottedRadius'}
       size="small"
-      className="capitalize font-semibold text-xs"
+      className="capitalize font-semibold text-xs h-fit"
       onClick={() => mutate()}
     >
       {data.isFollowedByUser ? 'Unfollow' : 'Follow'}

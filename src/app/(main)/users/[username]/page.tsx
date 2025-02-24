@@ -8,6 +8,10 @@ import TrendSidebar from '@/components/trend-sidebar';
 import UserAvatar from '@/components/user-avatar';
 import { formatDate } from 'date-fns';
 import { formatNumber } from '@/lib/utils';
+import FollowerCount from '@/components/follower-count';
+import { Button } from '@/components/ui/button';
+import FollowButton from '@/components/follow-button';
+import UserPosts from './UserPosts';
 
 interface PageProps {
   params: {
@@ -60,6 +64,12 @@ export default async function Page({ params: { username } }: PageProps) {
     <main className="w-full min-w-0 flex gap-5">
       <div className="w-full min-w-0">
         <UserProfile user={user} loggedInUserId={loggedInUser.id} />
+        <div className="~mt-3/6 rounded-md border bg-bg-main shadow-md ~p-3/5">
+          <h2 className="text-center ~text-xl/2xl font-bold">
+            {user.displayName}&apos; posts
+          </h2>
+        </div>
+        <UserPosts userId={user.id} />
       </div>
       <TrendSidebar />
     </main>
@@ -102,9 +112,28 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
                 {formatNumber(user._count.posts)}
               </span>
             </span>
+            <FollowerCount userId={user.id} initialState={followerInfo} />
           </div>
         </div>
+        {user.id === loggedInUserId ? (
+          <Button variant="transformToBottomBox" className="h-fit">
+            Edit profile
+          </Button>
+        ) : (
+          <FollowButton
+            userId={user.id}
+            initialState={followerInfo}
+          ></FollowButton>
+        )}
       </div>
+      {user.bio && (
+        <>
+          <hr />
+          <div className="overflow-hidden whitespace-pre-line break-words">
+            {user.bio}
+          </div>
+        </>
+      )}
     </div>
   );
 }
