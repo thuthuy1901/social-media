@@ -43,7 +43,7 @@ export default function UserButton({}: UserButtonProps) {
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button>
-          <UserAvatar avatarUrl={user.avatarUrl} />
+          <UserAvatar size={32} avatarUrl={user.avatarUrl} />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

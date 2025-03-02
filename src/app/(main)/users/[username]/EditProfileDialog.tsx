@@ -59,8 +59,6 @@ export default function EditPropfileDialog({
       ? new File([croppedAvatar], `avatar_${user.id}.webp`)
       : undefined;
 
-    console.log(newAvatarFile);
-
     mutation.mutate(
       {
         values,
