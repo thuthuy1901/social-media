@@ -21,7 +21,7 @@ const buttonVariants = cva(
         shadowBoxHover:
           "relative bg-gray-800 font-medium uppercase text-white transition-colors before:absolute before:inset-0 before:-z-10 before:h-full before:w-full before:border-2 before:border-transparent before:transition-all before:content-[''] before:hover:top-1 before:hover:left-1 before:hover:border-gray-700",
         transformToBottomBox:
-          "relative -top-1 -left-1 z-10 bg-green-main dark:bg-white/50 font-semibold uppercase text-white transition-all before:absolute before:top-1 before:left-1 before:h-full before:w-full before:border-2 before:border-green-main dark:before:border-white/50 before:transition-all before:content-[''] hover:top-0 hover:left-0 before:hover:top-0 before:hover:left-0",
+          "relative -top-1 -left-1 z-10 bg-green-main dark:bg-[#818181] font-semibold uppercase text-white transition-all before:absolute before:top-1 before:left-1 before:h-full before:w-full before:border-2 before:border-green-main dark:before:border-[#818181]/50 before:transition-all before:content-[''] hover:top-0 hover:left-0 before:hover:top-0 before:hover:left-0",
         navBarItem: 'hover:bg-black/10 dark:hover:bg-white/10',
       },
       size: {

@@ -9,10 +9,10 @@ import UserAvatar from '@/components/user-avatar';
 import { formatDate } from 'date-fns';
 import { formatNumber } from '@/lib/utils';
 import FollowerCount from '@/components/follower-count';
-import { Button } from '@/components/ui/button';
 import FollowButton from '@/components/follow-button';
 import UserPosts from './UserPosts';
 import { Linkify } from '@/components/Linkify';
+import EditProfileButton from './EditProfileButton';
 
 interface PageProps {
   params: {
@@ -117,9 +117,7 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
           </div>
         </div>
         {user.id === loggedInUserId ? (
-          <Button variant="transformToBottomBox" className="h-fit">
-            Edit profile
-          </Button>
+          <EditProfileButton user={user} />
         ) : (
           <FollowButton
             userId={user.id}
