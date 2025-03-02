@@ -44,7 +44,7 @@ export default function CropImageDialog({
           guides={false}
           zoomable={false}
           ref={cropperRef}
-          className="mx-auto size-fit"
+          className="mx-auto size-fit max-h-[calc(100vh-150px)]"
         />
         <DialogFooter>
           <Button onClick={onClose} variant="dotted">
