@@ -4,6 +4,8 @@ import UserAvatar from '../user-avatar';
 import { formatRelativeDate } from '@/lib/utils';
 import { useSession } from '@/app/(main)/SessionProvider';
 import { PostMoreButton } from './PostMoreButton';
+import { Linkify } from '../Linkify';
+import UserTooltip from '../user-tooltip';
 
 interface Postprops {
   post: PostData;
@@ -15,16 +17,20 @@ export default function Post({ post }: Postprops) {
     <article className="bg-bg-main border shadow-md rounded-md ~p-3/5 group/post">
       <div className="flex justify-between gap-3">
         <div className="flex items-center gap-3">
-          <Link href={`/users/${post.user.username}`}>
-            <UserAvatar avatarUrl={post.user.avatarUrl} size={30} />
-          </Link>
-          <div className="flex flex-col">
-            <Link
-              href={`/users/${post.user.username}`}
-              className="font-bold text-text-title capitalize"
-            >
-              {post.user.displayName}
+          <UserTooltip user={post.user}>
+            <Link href={`/users/${post.user.username}`}>
+              <UserAvatar avatarUrl={post.user.avatarUrl} size={30} />
             </Link>
+          </UserTooltip>
+          <div className="flex flex-col">
+            <UserTooltip user={post.user}>
+              <Link
+                href={`/users/${post.user.username}`}
+                className="font-bold text-text-title capitalize"
+              >
+                {post.user.displayName}
+              </Link>
+            </UserTooltip>
             <Link href={`/posts/${post.id}`} className="text-xs text-gray-400">
               {formatRelativeDate(post.createdAt)}
             </Link>
@@ -37,7 +43,11 @@ export default function Post({ post }: Postprops) {
           />
         )}
       </div>
-      <div className="whitespace-pre-line break-words mt-3">{post.content}</div>
+      <Linkify>
+        <div className="whitespace-pre-line break-words mt-3">
+          {post.content}
+        </div>
+      </Linkify>
     </article>
   );
 }

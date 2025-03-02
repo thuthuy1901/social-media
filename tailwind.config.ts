@@ -1,8 +1,9 @@
 import type { Config } from 'tailwindcss';
 import fluid, { extract, screens, fontSize } from 'fluid-tailwind';
 import plugin from 'tailwindcss/plugin';
+import { withUt } from 'uploadthing/tw';
 
-export default {
+const config = {
   darkMode: ['class'],
   content: {
     files: [
@@ -70,6 +71,7 @@ export default {
         },
         text: {
           title: 'var(--text-main)',
+          second: 'var(--text-second)',
         },
       },
       fontFamily: {
@@ -97,3 +99,5 @@ export default {
     }),
   ],
 } satisfies Config;
+
+export default withUt(config);
