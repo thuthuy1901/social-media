@@ -95,7 +95,7 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
       <UserAvatar
         avatarUrl={user.avatarUrl}
         size={250}
-        className="mx-auto size-full max-w-60 max-h-60 rounded-full"
+        className="mx-auto max-w-60 max-h-60 rounded-full !~size-36/64"
       />
       <div className="flex flex-wrap gap-3 sm:flex-nowrap">
         <div className="me-auto space-y-3">

@@ -41,7 +41,11 @@ export default function PostEditor() {
     <div>
       <div className="rounded-md border bg-bg-main ~p-3/5 shadow-md">
         <div className="flex items-center gap-5">
-          <UserAvatar avatarUrl={user.avatarUrl} className="max-sm:hidden" />
+          <UserAvatar
+            avatarUrl={user.avatarUrl}
+            size={40}
+            className="max-sm:hidden"
+          />
           <EditorContent
             editor={editor}
             className="grow max-h-[20rem] overflow-y-auto border dark:border-white/30 rounded-md bg-black/10 dark:bg-white/10 p-2"

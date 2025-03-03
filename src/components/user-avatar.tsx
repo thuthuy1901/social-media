@@ -27,7 +27,8 @@ export default function UserAvatar({
     />
   ) : (
     <div
-      className={`${classNew} size-8 dark:bg-gray-600 border dark:border-white border-gray-300 p-1 overflow-hidden`}
+      className={`${classNew} ${size ? '' : 'size-8'} dark:bg-gray-600 border dark:border-white border-gray-300 p-1 overflow-hidden`}
+      style={{ width: `${size}px`, height: `${size}px` }}
     >
       <UserRound className="!size-full" />
     </div>

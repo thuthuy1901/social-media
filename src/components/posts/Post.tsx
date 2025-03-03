@@ -19,7 +19,7 @@ export default function Post({ post }: Postprops) {
         <div className="flex items-center gap-3">
           <UserTooltip user={post.user}>
             <Link href={`/users/${post.user.username}`}>
-              <UserAvatar avatarUrl={post.user.avatarUrl} size={30} />
+              <UserAvatar avatarUrl={post.user.avatarUrl} size={35} />
             </Link>
           </UserTooltip>
           <div className="flex flex-col">

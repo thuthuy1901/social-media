@@ -80,14 +80,16 @@ export default function EditPropfileDialog({
         </DialogHeader>
         <div className="space-y-1.5">
           <Label>Avatar</Label>
-          <AvatarInput
-            src={
-              croppedAvatar
-                ? URL.createObjectURL(croppedAvatar)
-                : user.avatarUrl || '/avatar-placeholder.png'
-            }
-            onImageCropped={setCroppedAvatar}
-          />
+          <div className="mx-auto w-fit">
+            <AvatarInput
+              src={
+                croppedAvatar
+                  ? URL.createObjectURL(croppedAvatar)
+                  : user.avatarUrl || '/avatar-placeholder.png'
+              }
+              onImageCropped={setCroppedAvatar}
+            />
+          </div>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
