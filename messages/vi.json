@@ -1,0 +1,72 @@
+{
+  "button-follow": {
+    "follow": "Theo dõi",
+    "unFollow": "Bỏ theo dõi"
+  },
+  "button": {
+    "delete": "Xóa",
+    "edit": "Sửa"
+  },
+  "follow-title": "Theo dõi",
+  "crop-image-box": {
+    "title": "Cắt hình ảnh",
+    "cancel": "Quay lại",
+    "crop": "Cắt"
+  },
+  "edit-profile-box": {
+    "title": "Sửa hồ sơ",
+    "avatar": "Đại diện",
+    "display-name": "Tên hiển thị",
+    "placeholder-display": "Tên hiển thị của bạn",
+    "placeholder-bio": "Giới thiệu một chút về bản thân bạn",
+    "button": "Lưu"
+  },
+  "delete-post-box": {
+    "title": "Xóa bài viết?",
+    "content": "Bạn chắc chắn muốn xóa? Thao tác này không thẻ hoàn tác!"
+  },
+  "profile": {
+    "since": "Tham gia từ",
+    "post": "Bài viết",
+    "follow": "Theo dõi",
+    "button-edit": "Sửa hồ sơ"
+  },
+  "home": {
+    "placeholder-search": "Tìm kiếm",
+    "box-user": {
+      "title": "Tư cách là ",
+      "profile": "Hồ sơ",
+      "theme": {
+        "title": "Chủ đề",
+        "light": "Sáng",
+        "dark": "Tối",
+        "system": "Hệ thống",
+        "log-out": "Đăng xuất"
+      },
+      "language": {
+        "title": "Ngôn ngữ",
+        "vi": "Việt Nam",
+        "en": "Tiếng Anh"
+      }
+    },
+    "menu-bar": {
+      "home": "Trang chủ",
+      "notification": "Thông báo",
+      "message": "Tin nhắn",
+      "bookmark": "Dấu trang"
+    },
+    "post-editor": {
+      "button": "Đăng bài",
+      "for-you": "Cho bạn",
+      "following": "Theo dõi"
+    },
+    "follow-box": {
+      "title": "Đề xuất"
+    },
+    "trending-box": {
+      "title": "Thịnh hành",
+      "post": "bài viết",
+      "posts": "bài viết"
+    }
+  }
+}

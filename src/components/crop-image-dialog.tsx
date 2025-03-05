@@ -9,6 +9,7 @@ import {
 } from './ui/dialog';
 import 'cropperjs/dist/cropper.css';
 import { Button } from './ui/button';
+import { useTranslations } from 'next-intl';
 
 interface CropImageDialogProps {
   src: string;
@@ -23,6 +24,7 @@ export default function CropImageDialog({
   onClose,
   onCropped,
 }: CropImageDialogProps) {
+  const t = useTranslations('crop-image-box');
   const cropperRef = useRef<ReactCropperElement>(null);
 
   function crop() {
@@ -36,7 +38,7 @@ export default function CropImageDialog({
     <Dialog open onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Crop image</DialogTitle>
+          <DialogTitle className="text-text-title">{t('title')}</DialogTitle>
         </DialogHeader>
         <Cropper
           src={src}
@@ -48,10 +50,10 @@ export default function CropImageDialog({
         />
         <DialogFooter>
           <Button onClick={onClose} variant="dotted">
-            Cancel
+            {t('cancel')}
           </Button>
           <Button onClick={crop} variant="dotted">
-            Crop
+            {t('crop')}
           </Button>
         </DialogFooter>
       </DialogContent>

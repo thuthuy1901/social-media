@@ -1,0 +1,68 @@
+{
+  "button-follow": {
+    "follow": "Follow",
+    "unFollow": "Unfollow"
+  },
+  "button": {
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+  "follow-title": "Follows",
+  "crop-image-box": {
+    "title": "Crop image",
+    "cancel": "Cancel",
+    "crop": "Crop"
+  },
+  "edit-profile-box": {
+    "title": "Edit profile",
+    "avatar": "Avatar",
+    "display-name": "Display name",
+    "placeholder-display": "Your display name",
+    "placeholder-bio": "Tell us a little bit about yourself",
+    "button": "Save"
+  },
+  "delete-post-box": {
+    "title": "Delete post?",
+    "content": "Are you sure you want to delete this post? This action cannot be undone."
+  },
+  "profile": {
+    "since": "Member since",
+    "post": "Posts",
+    "follow": "Followers",
+    "button-edit": "Edit profile"
+  },
+  "home": {
+    "placeholder-search": "Search",
+    "box-user": {
+      "title": "Logged in as ",
+      "profile": "Profile",
+      "theme": {
+        "title": "Theme",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System",
+        "log-out": "Log out"
+      },
+      "language": {
+        "title": "Language",
+        "vi": "Vietnamese",
+        "en": "English"
+      }
+    },
+    "menu-bar": {
+      "home": "Home",
+      "notification": "Notifications",
+      "message": "Messages",
+      "bookmark": "Bookmarks"
+    },
+    "follow-box": {
+      "title": "Who to follow"
+    },
+    "follow-box-title": "Who to follow",
+    "trending-box": {
+      "title": "Trending Topics",
+      "post": "post",
+      "posts": "posts"
+    }
+  }
+}

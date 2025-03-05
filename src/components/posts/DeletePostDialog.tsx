@@ -9,18 +9,22 @@ import {
   DialogTitle,
 } from '../ui/dialog';
 import LoadingButton from '../ui/loading-button';
+import { useTranslations } from 'next-intl';
 
 interface DeletePostDialogProps {
   post: PostData;
   open: boolean;
   onClose: () => void;
+  button: string;
 }
 
 export function DeletePostDialog({
   post,
   open,
   onClose,
+  button,
 }: DeletePostDialogProps) {
+  const t = useTranslations('delete-post-box');
   const mutation = useDeletePostMutation();
 
   function handleOpenChange(open: boolean) {
@@ -33,11 +37,8 @@ export function DeletePostDialog({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Delete post?</DialogTitle>
-          <DialogDescription>
-            Are you sure you want to delete this post? This action cannot be
-            undone.
-          </DialogDescription>
+          <DialogTitle className="text-text-title">{t('title')}</DialogTitle>
+          <DialogDescription>{t('content')}</DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <LoadingButton
@@ -45,7 +46,7 @@ export function DeletePostDialog({
             onClick={() => mutation.mutate(post.id, { onSuccess: onClose })}
             loading={mutation.isPending}
           >
-            Delete
+            {button}
           </LoadingButton>
         </DialogFooter>
       </DialogContent>

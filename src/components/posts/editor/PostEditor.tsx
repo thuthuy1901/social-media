@@ -6,11 +6,26 @@ import UserAvatar from '@/components/user-avatar';
 import { useSession } from '@/app/(main)/SessionProvider';
 import { useSubmitPostMutation } from './mutation';
 import LoadingButton from '@/components/ui/loading-button';
+import useMediaUpload from './useMediaUpload';
+import { useRef } from 'react';
 
-export default function PostEditor() {
+interface PostEditorProps {
+  button: string;
+}
+
+export default function PostEditor({ button }: PostEditorProps) {
   const { user } = useSession();
 
   const mutation = useSubmitPostMutation();
+
+  const {
+    startUpload,
+    attachments,
+    isUploading,
+    uploadProgress,
+    removeAttachment,
+    reset: resetMediaUpload,
+  } = useMediaUpload();
 
   const editor = useEditor({
     extensions: [
@@ -22,6 +37,7 @@ export default function PostEditor() {
         placeholder: "What's your new today?",
       }),
     ],
+    immediatelyRender: false,
   });
 
   const input =
@@ -31,9 +47,18 @@ export default function PostEditor() {
 
   function onSubmit() {
     // await submitPost(input);
-    mutation.mutate(input, {
-      onSuccess: () => editor?.commands.clearContent(),
-    });
+    mutation.mutate(
+      {
+        content: input,
+        mediaIds: attachments.map((a) => a.mediaId).filter(Boolean) as string[],
+      },
+      {
+        onSuccess: () => {
+          editor?.commands.clearContent();
+          resetMediaUpload();
+        },
+      },
+    );
     editor?.commands.clearContent();
   }
 
@@ -58,10 +83,23 @@ export default function PostEditor() {
             disabled={!input.trim()}
             loading={mutation.isPending}
           >
-            Create
+            {button}
           </LoadingButton>
         </div>
       </div>
     </div>
   );
+}
+
+interface AddAttachmentsButtonProps {
+  onFilesSelected: (files: File[]) => void;
+  disabled: boolean;
+}
+
+function AddAttachmentsButton({
+  onFilesSelected,
+  disabled,
+}: AddAttachmentsButtonProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  return;
 }

@@ -17,9 +17,8 @@ export default function useMediaUpload() {
 
   const { startUpload, isUploading } = useUploadThing('attachment', {
     onBeforeUploadBegin(files) {
-      const renameFiles = files.map((file) => {
+      const renamedFiles = files.map((file) => {
         const extension = file.name.split('.').pop();
-
         return new File(
           [file],
           `attachment_${crypto.randomUUID()}.${extension}`,
@@ -31,10 +30,10 @@ export default function useMediaUpload() {
 
       setAttachments((prev) => [
         ...prev,
-        ...renameFiles.map((file) => ({ file, isUploading: true })),
+        ...renamedFiles.map((file) => ({ file, isUploading: true })),
       ]);
 
-      return renameFiles;
+      return renamedFiles;
     },
     onUploadProgress: setUploadProgress,
     onClientUploadComplete(res) {
@@ -61,5 +60,41 @@ export default function useMediaUpload() {
     },
   });
 
-  function handleStartUpload() {}
+  function handleStartUpload(files: File[]) {
+    if (isUploading) {
+      toast({
+        variant: 'destructive',
+        description: 'Please wait for the current upload to finish.',
+      });
+      return;
+    }
+
+    if (attachments.length + files.length > 5) {
+      toast({
+        variant: 'destructive',
+        description: 'You can only upload up to 5 attachments per post.',
+      });
+      return;
+    }
+
+    startUpload(files);
+  }
+
+  function removeAttachment(fileName: string) {
+    setAttachments((prev) => prev.filter((a) => a.file.name !== fileName));
+  }
+
+  function reset() {
+    setAttachments([]);
+    setUploadProgress(undefined);
+  }
+
+  return {
+    startUpload: handleStartUpload,
+    attachments,
+    isUploading,
+    uploadProgress,
+    removeAttachment,
+    reset,
+  };
 }

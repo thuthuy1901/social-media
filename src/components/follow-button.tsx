@@ -6,6 +6,7 @@ import { FollowerInfo } from '@/lib/types';
 import { QueryKey, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from './ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslations } from 'next-intl';
 
 interface FollowButtonProps {
   userId: string;
@@ -16,6 +17,7 @@ export default function FollowButton({
   userId,
   initialState,
 }: FollowButtonProps) {
+  const t = useTranslations('button-follow');
   const { toast } = useToast();
 
   const queryClient = useQueryClient();
@@ -60,7 +62,7 @@ export default function FollowButton({
       className="capitalize font-semibold text-xs h-fit"
       onClick={() => mutate()}
     >
-      {data.isFollowedByUser ? 'Unfollow' : 'Follow'}
+      {data.isFollowedByUser ? t('unFollow') : t('follow')}
     </Button>
   );
 }

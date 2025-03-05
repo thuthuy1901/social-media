@@ -30,6 +30,7 @@ import { Label } from '@/components/ui/label';
 import { Camera } from 'lucide-react';
 import CropImageDialog from '@/components/crop-image-dialog';
 import Resizer from 'react-image-file-resizer';
+import { useTranslations } from 'next-intl';
 
 interface EditProfileDialogProps {
   user: UserData;
@@ -42,6 +43,7 @@ export default function EditPropfileDialog({
   open,
   onOpenChange,
 }: EditProfileDialogProps) {
+  const t = useTranslations('edit-profile-box');
   const [croppedAvatar, setCroppedAvatar] = useState<Blob | null>(null);
 
   const form = useForm<UpdateUserProfileValues>({
@@ -76,10 +78,10 @@ export default function EditPropfileDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle className="text-text-title">{t('title')}</DialogTitle>
         </DialogHeader>
         <div className="space-y-1.5">
-          <Label>Avatar</Label>
+          <Label>{t('avatar')}</Label>
           <div className="mx-auto w-fit">
             <AvatarInput
               src={
@@ -98,9 +100,9 @@ export default function EditPropfileDialog({
               name="displayName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Display name</FormLabel>
+                  <FormLabel>{t('display-name')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your display name" {...field} />
+                    <Input placeholder={t('placeholder-display')} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -114,7 +116,7 @@ export default function EditPropfileDialog({
                   <FormLabel>Bio</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell us a little bit about yourself"
+                      placeholder={t('placeholder-bio')}
                       className="resize-none"
                       {...field}
                     />
@@ -129,7 +131,7 @@ export default function EditPropfileDialog({
                 loading={mutation.isPending}
                 variant="transformToBottomBox"
               >
-                Save
+                {t('button')}
               </LoadingButton>
             </DialogFooter>
           </form>

@@ -2,3 +2,7 @@ npx prisma studio
 
 npx prisma db push
 
+const t = useTranslations('');
+
+const t = await getTranslations('');
+

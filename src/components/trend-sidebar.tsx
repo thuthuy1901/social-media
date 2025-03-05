@@ -9,6 +9,7 @@ import { formatNumber } from '@/lib/utils';
 import FollowButton from './follow-button';
 import { getUserDataSelect } from '@/lib/types';
 import UserTooltip from './user-tooltip';
+import { getTranslations } from 'next-intl/server';
 
 export default function TrendSidebar() {
   return (
@@ -22,6 +23,7 @@ export default function TrendSidebar() {
 }
 
 async function WhoToFollow() {
+  const t = await getTranslations('home');
   const { user } = await validateRequest();
   // await new Promise((r) => setTimeout(r, 10000));
   if (!user) return null;
@@ -43,7 +45,7 @@ async function WhoToFollow() {
 
   return (
     <div className="bg-bg-main border rounded-md shadow-md ~p-3/5">
-      <h3 className="text-xl font-bold">Who to follow</h3>
+      <h3 className="text-xl font-bold">{t('follow-box.title')}</h3>
       <div className="space-y-2 pt-2">
         {usersToFollow.map((user) => (
           <div key={user.id} className="flex justify-between items-center">
@@ -101,10 +103,11 @@ const getTrendingTopics = unstable_cache(
 );
 
 async function TrendingTopics() {
+  const t = await getTranslations('home.trending-box');
   const trendingTopics = await getTrendingTopics();
   return (
     <div className="~mt-3/6 bg-bg-main border rounded-md shadow-md ~p-3/5">
-      <h3 className="text-xl font-bold">Trending Topics</h3>
+      <h3 className="text-xl font-bold">{t('title')}</h3>
       <div className="space-y-2 pt-2">
         {trendingTopics.map(({ hashtag, count }) => {
           const title = hashtag.split('#')[1];
@@ -114,7 +117,8 @@ async function TrendingTopics() {
                 {hashtag}
               </p>
               <p className="text-xs text-gray-400 line-clamp-1 break-all">
-                {formatNumber(count)} {count === 1 ? 'post' : 'posts'}
+                {formatNumber(count)}{' '}
+                {count === 1 ? `${t('post')}` : `${t('posts')}`}
               </p>
             </Link>
           );

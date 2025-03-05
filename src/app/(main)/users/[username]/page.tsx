@@ -13,6 +13,7 @@ import FollowButton from '@/components/follow-button';
 import UserPosts from './UserPosts';
 import { Linkify } from '@/components/Linkify';
 import EditProfileButton from './EditProfileButton';
+import { getTranslations } from 'next-intl/server';
 
 interface PageProps {
   params: {
@@ -83,6 +84,8 @@ interface UserProfileProps {
 }
 
 async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
+  const t = await getTranslations('profile');
+
   const followerInfo: FollowerInfo = {
     followers: user._count.followers,
     isFollowedByUser: user.followers.some(
@@ -105,10 +108,12 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
             </h1>
             <div className="text-muted-foreground">@{user.username}</div>
           </div>
-          <div>Member since {formatDate(user.createAt, 'MMM d, yyyy')}</div>
+          <div>
+            {t('since')} {formatDate(user.createAt, 'MMM d, yyyy')}
+          </div>
           <div className="flex items-center gap-3">
             <span>
-              Posts:{' '}
+              {t('post')}:{' '}
               <span className="font-semibold">
                 {formatNumber(user._count.posts)}
               </span>

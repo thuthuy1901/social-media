@@ -20,6 +20,7 @@ import {
   ArrowRightFromLine,
   Check,
   Contact,
+  Languages,
   Moon,
   Sun,
   SunMoon,
@@ -28,17 +29,39 @@ import {
 import { logout } from '@/app/(auth)/action';
 import { useTheme } from 'next-themes';
 import { useQueryClient } from '@tanstack/react-query';
+import { setUserLocale } from '@/services/locale';
 
 interface UserButtonProps {
-  className?: string;
+  title: string;
+  profile: string;
+  themeTitle: string;
+  themeLight: string;
+  themeDark: string;
+  themeSystem: string;
+  logOut: string;
+  languageTitle: string;
+  vi: string;
+  en: string;
+  locale: string;
 }
 
-export default function UserButton({}: UserButtonProps) {
+export default function UserButton({
+  title,
+  profile,
+  themeTitle,
+  themeLight,
+  themeDark,
+  themeSystem,
+  logOut,
+  languageTitle,
+  vi,
+  en,
+  locale,
+}: UserButtonProps) {
   const { user } = useSession();
   const { setTheme, theme } = useTheme();
 
   const queryClient = useQueryClient();
-
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
@@ -48,35 +71,53 @@ export default function UserButton({}: UserButtonProps) {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>
-          Logged in as <b className="text-text-title">@{user.username}</b>
+          {title} <b className="text-text-title">@{user.username}</b>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <Link href={`/users/${user.username}`}>
           <DropdownMenuItem>
-            <Contact /> Profile
+            <Contact /> {profile}
           </DropdownMenuItem>
         </Link>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
+            <Languages />
+            {languageTitle}
+          </DropdownMenuSubTrigger>
+          <DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuItem onClick={() => setUserLocale('vi')}>
+                {vi}
+                {locale === 'vi' && <Check />}
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setUserLocale('en')}>
+                {en}
+                {locale === 'en' && <Check />}
+              </DropdownMenuItem>
+            </DropdownMenuSubContent>
+          </DropdownMenuPortal>
+        </DropdownMenuSub>
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger>
             <TvMinimal />
-            Theme
+            {themeTitle}
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
               <DropdownMenuItem onClick={() => setTheme('light')}>
                 <Sun />
-                Light
+                {themeLight}
                 {theme === 'light' && <Check />}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme('dark')}>
                 <Moon />
-                Dark
+                {themeDark}
                 {theme === 'dark' && <Check />}
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={() => setTheme('system')}>
                 <SunMoon />
-                System
+                {themeSystem}
                 {theme === 'system' && <Check />}
               </DropdownMenuItem>
             </DropdownMenuSubContent>
@@ -89,7 +130,7 @@ export default function UserButton({}: UserButtonProps) {
             logout();
           }}
         >
-          <ArrowRightFromLine /> Log out
+          <ArrowRightFromLine /> {logOut}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
