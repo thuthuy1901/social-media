@@ -55,10 +55,15 @@
       "message": "Messages",
       "bookmark": "Bookmarks"
     },
+    "post-editor": {
+      "button": "Create",
+      "for-you": "For You",
+      "following": "Following",
+      "placeholder": "What's your new today?"
+    },
     "follow-box": {
       "title": "Who to follow"
     },
-    "follow-box-title": "Who to follow",
     "trending-box": {
       "title": "Trending Topics",
       "post": "post",

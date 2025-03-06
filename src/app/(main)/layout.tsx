@@ -19,7 +19,7 @@ export default async function Layout({
           <MenuBar className="sm:flex flex-col bg-bg-main border rounded-md gap-2 p-2 sticky top-[5.25rem] h-fit hidden shadow-md lg:~w-40/80" />
           {children}
         </div>
-        <MenuBar className="sm:hidden flex justify-evenly bg-bg-main border-t gap-2 p-2 sticky bottom-0 h-fit w-full backdrop-blur-sm z-10" />
+        <MenuBar className="sm:hidden flex justify-evenly bg-white/80 dark:bg-black/80 border-t gap-2 p-2 sticky bottom-0 h-fit w-full backdrop-blur-sm z-10" />
       </div>
     </SessionProvider>
   );

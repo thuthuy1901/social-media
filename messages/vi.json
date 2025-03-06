@@ -58,7 +58,8 @@
     "post-editor": {
       "button": "Đăng bài",
       "for-you": "Cho bạn",
-      "following": "Theo dõi"
+      "following": "Theo dõi",
+      "placeholder": "Bạn thấy như thế nào?"
     },
     "follow-box": {
       "title": "Đề xuất"
