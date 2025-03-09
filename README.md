@@ -11,3 +11,7 @@ npx prisma studio
 ```
 npx prisma db push
 ```
+
+### link deploy
+
+[url_deploy](https://social-media-kappa-snowy.vercel.app/)
