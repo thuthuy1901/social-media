@@ -16,9 +16,7 @@ import EditProfileButton from './EditProfileButton';
 import { getTranslations } from 'next-intl/server';
 
 interface PageProps {
-  params: {
-    username: string;
-  };
+  params: Promise<{ username: string }>;
 }
 
 const getUser = cache(async (username: string, loggedInUserId: string) => {

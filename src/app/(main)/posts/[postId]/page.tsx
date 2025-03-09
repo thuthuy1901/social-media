@@ -7,14 +7,13 @@ import UserTooltip from '@/components/user-tooltip';
 import prisma from '@/lib/prisma';
 import { getPostDataInclude, UserData } from '@/lib/types';
 import { Loader2 } from 'lucide-react';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { cache, Suspense } from 'react';
 
 interface PageProps {
-  params: {
-    postId: string;
-  };
+  params: Promise<{ postId: string }>;
 }
 
 const getPost = cache(async (postId: string, loggedInUserId: string) => {
@@ -30,7 +29,9 @@ const getPost = cache(async (postId: string, loggedInUserId: string) => {
   return post;
 });
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { postId } = await params;
   const { user } = await validateRequest();
 
@@ -42,7 +43,6 @@ export async function generateMetadata({ params }: PageProps) {
     title: `${post.user.displayName}: ${post.content.slice(0, 50)}...`,
   };
 }
-
 export default async function Page({ params }: PageProps) {
   const { postId } = await params;
   const { user } = await validateRequest();
