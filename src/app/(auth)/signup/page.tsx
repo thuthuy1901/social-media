@@ -16,7 +16,7 @@ export default function Page() {
         fill
         className="object-cover -z-10"
       />
-      <section className="h-fit ~py-2/5 ~px-2/10 bg-white/40 dark:bg-black/30 border border-white dark:border-white/50 rounded-lg w-[90%] max-w-[500px] mx-auto">
+      <section className="h-fit ~py-2/5 ~px-2/10 bg-black/50 border border-white dark:border-white/50 rounded-lg w-[90%] max-w-[500px] mx-auto">
         <h1 className="text-white text-center">Sign Up</h1>
         <FormSignUp />
         <p className="text-center text-sm group">

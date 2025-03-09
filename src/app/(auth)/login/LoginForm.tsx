@@ -79,6 +79,7 @@ const FormLogin = () => {
             loading={isPending}
             type="submit"
             variant="transformToBottomBox"
+            className="dark:bg-green-main dark:before:border-green-main"
           >
             Log in
           </LoadingButton>
