@@ -1,3 +1,4 @@
+'use client';
 import { PostData } from '@/lib/types';
 import Link from 'next/link';
 import UserAvatar from '../user-avatar';
@@ -33,7 +34,11 @@ export default function Post({ post }: Postprops) {
                 {post.user.displayName}
               </Link>
             </UserTooltip>
-            <Link href={`/posts/${post.id}`} className="text-xs text-gray-400">
+            <Link
+              href={`/posts/${post.id}`}
+              className="text-xs text-gray-400"
+              suppressHydrationWarning
+            >
               {formatRelativeDate(post.createdAt)}
             </Link>
           </div>

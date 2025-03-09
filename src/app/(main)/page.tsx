@@ -4,6 +4,11 @@ import ForYouFeed from './ForYouFeed';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import FollowingFeed from './FollowingFeed';
 import { useTranslations } from 'next-intl';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Home page',
+};
 
 export default function Home() {
   const t = useTranslations('home.post-editor');
