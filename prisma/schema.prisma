@@ -60,7 +60,7 @@ model Post {
   userId      String
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   attachments Media[]
-  Like        Like[]
+  likes       Like[]
 
   createdAt DateTime @default(now())
 
@@ -93,3 +93,8 @@ model Like {
   @@unique([userId, postId])
   @@map("likes")
 }
+
+// model Bookmark {
+//   userId String
+//   user User @relation()
+// }

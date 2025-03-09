@@ -9,6 +9,7 @@ import { Linkify } from '../Linkify';
 import UserTooltip from '../user-tooltip';
 import { Media } from '@prisma/client';
 import Image from 'next/image';
+import LikeButton from './LikeButton';
 
 interface Postprops {
   post: PostData;
@@ -60,6 +61,16 @@ export default function Post({ post }: Postprops) {
           <MediaPreviews attachments={post.attachments} />
         </div>
       )}
+      <hr className="mt-5" />
+      <div className="mt-3">
+        <LikeButton
+          postId={post.id}
+          initialState={{
+            likes: post._count.likes,
+            isLikedByUser: post.likes.some((like) => like.userId === user.id),
+          }}
+        />
+      </div>
     </article>
   );
 }
