@@ -10,6 +10,7 @@ import UserTooltip from '../user-tooltip';
 import { Media } from '@prisma/client';
 import Image from 'next/image';
 import LikeButton from './LikeButton';
+import BookmarkButton from './BookmarkButton';
 
 interface Postprops {
   post: PostData;
@@ -62,12 +63,20 @@ export default function Post({ post }: Postprops) {
         </div>
       )}
       <hr className="mt-5" />
-      <div className="mt-3">
+      <div className="mt-3 flex items-center justify-between">
         <LikeButton
           postId={post.id}
           initialState={{
             likes: post._count.likes,
             isLikedByUser: post.likes.some((like) => like.userId === user.id),
+          }}
+        />
+        <BookmarkButton
+          postId={post.id}
+          initialState={{
+            isBookmarkedByUser: post.bookmarks.some(
+              (bookmark) => bookmark.userId === user.id,
+            ),
           }}
         />
       </div>
