@@ -17,7 +17,7 @@ const MenuBar = ({ className = '' }: MenuBarProps) => {
           <span className="hidden lg:inline font-semibold">{t('home')}</span>
         </Link>
       </Button>
-      <Button
+      {/* <Button
         title="Notifications"
         className="justify-start"
         variant="navBarItem"
@@ -28,13 +28,13 @@ const MenuBar = ({ className = '' }: MenuBarProps) => {
             {t('notification')}
           </span>
         </Link>
-      </Button>
-      <Button title="Messages" className="justify-start" variant="navBarItem">
+      </Button> */}
+      {/* <Button title="Messages" className="justify-start" variant="navBarItem">
         <Link href="/messages" className="flex items-center gap-2">
           <Mail />
           <span className="hidden lg:inline font-semibold">{t('message')}</span>
         </Link>
-      </Button>
+      </Button> */}
       <Button title="Bookmarks" className="justify-start" variant="navBarItem">
         <Link href="/bookmarks" className="flex items-center gap-2">
           <Bookmark />

@@ -11,6 +11,9 @@ import { Media } from '@prisma/client';
 import Image from 'next/image';
 import LikeButton from './LikeButton';
 import BookmarkButton from './BookmarkButton';
+import { useState } from 'react';
+import { MessageSquare } from 'lucide-react';
+import Comments from '../comments/Comments';
 
 interface Postprops {
   post: PostData;
@@ -18,6 +21,8 @@ interface Postprops {
 
 export default function Post({ post }: Postprops) {
   const { user } = useSession();
+  const [showComments, setShowComments] = useState(false);
+
   return (
     <article className="bg-bg-main border shadow-md rounded-md ~p-3/5 group/post">
       <div className="flex justify-between gap-3">
@@ -71,6 +76,11 @@ export default function Post({ post }: Postprops) {
             isLikedByUser: post.likes.some((like) => like.userId === user.id),
           }}
         />
+        <CommentButton
+          isShow={showComments}
+          post={post}
+          onClick={() => setShowComments(!showComments)}
+        />
         <BookmarkButton
           postId={post.id}
           initialState={{
@@ -80,6 +90,12 @@ export default function Post({ post }: Postprops) {
           }}
         />
       </div>
+      {showComments && (
+        <>
+          <hr className="my-3" />
+          <Comments post={post} />
+        </>
+      )}
     </article>
   );
 }
@@ -129,4 +145,24 @@ function MediaPreview({ media }: MediaPreviewsProp) {
   }
 
   return <p className="text-text-second">Unsupported media type</p>;
+}
+
+interface CommentButtonProps {
+  isShow: boolean;
+  post: PostData;
+  onClick: () => void;
+}
+
+function CommentButton({ post, onClick, isShow }: CommentButtonProps) {
+  return (
+    <button onClick={onClick} className="flex items-center gap-2">
+      <MessageSquare
+        className={`size-5 ${isShow ? 'fill-text-title text-text-title' : ''}`}
+      />
+      <span className="text-sm font-medium tabular-nums">
+        {post._count.comments}{' '}
+        <span className="hidden sm:inline">comments</span>
+      </span>
+    </button>
+  );
 }

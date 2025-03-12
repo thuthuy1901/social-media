@@ -3,6 +3,7 @@ import { Lucia, Session, User } from 'lucia';
 import { cookies } from 'next/headers';
 import { cache } from 'react';
 import prisma from './lib/prisma';
+// import {G}
 
 const adapter = new PrismaAdapter(prisma.session, prisma.user);
 
@@ -38,6 +39,8 @@ interface DatabaseUserAttributes {
   avatarUrl: string | null;
   googleId: string | null;
 }
+
+// export const
 
 export const validateRequest = cache(
   async (): Promise<
