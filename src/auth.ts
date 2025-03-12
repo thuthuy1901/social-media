@@ -3,7 +3,7 @@ import { Lucia, Session, User } from 'lucia';
 import { cookies } from 'next/headers';
 import { cache } from 'react';
 import prisma from './lib/prisma';
-// import {G}
+import { Google } from 'arctic';
 
 const adapter = new PrismaAdapter(prisma.session, prisma.user);
 
@@ -40,7 +40,11 @@ interface DatabaseUserAttributes {
   googleId: string | null;
 }
 
-// export const
+export const google = new Google(
+  process.env.GOOGLE_CLIENT_ID!,
+  process.env.GOOGLE_CLIENT_SECRET!,
+  `${process.env.NEXT_PUBLIC_BASIC_URL}/api/auth/callback/google`,
+);
 
 export const validateRequest = cache(
   async (): Promise<

@@ -19,6 +19,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  rewrites: async () => {
+    return [
+      {
+        source: '/hashtag/:tag',
+        destination: '/search?search=%23:tag',
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
