@@ -6,3 +6,6 @@ const t = useTranslations('');
 
 const t = await getTranslations('');
 
+socket, noti, giưới thiệu về kĩ  cấu trúc code.
+cấu trúc (vòng liên kết bạn bè, bè chung)- chỉnh iề cuất
+thêm yhees tố mạn g xa hội
