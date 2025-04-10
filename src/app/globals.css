@@ -34,6 +34,7 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --bg-main: #ffffff;
+    --bg-notification: #faffe4;
     --text-main: #254e50;
     --text-second: #0096b1;
   }
@@ -63,6 +64,7 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --bg-notification: #293435;
     --bg-main: rgb(255 255 255 / 0.2);
     --text-main: #c0c999;
     --text-second: #a5d8ff;

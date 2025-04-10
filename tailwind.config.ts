@@ -68,6 +68,7 @@ const config = {
         },
         bg: {
           main: 'var(--bg-main)',
+          second: 'var(--bg-notification)',
         },
         text: {
           title: 'var(--text-main)',
