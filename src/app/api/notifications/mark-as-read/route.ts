@@ -2,7 +2,7 @@ import { validateRequest } from '@/auth';
 import prisma from '@/lib/prisma';
 import { NotificationCountInfo } from '@/lib/types';
 
-export async function GET() {
+export async function PATCH() {
   try {
     const { user } = await validateRequest();
 
@@ -10,18 +10,17 @@ export async function GET() {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const unreadCount = await prisma.notification.count({
+    await prisma.notification.updateMany({
       where: {
         recipientId: user.id,
         read: false,
       },
+      data: {
+        read: true,
+      },
     });
 
-    const data: NotificationCountInfo = {
-      unreadCount,
-    };
-
-    return Response.json(data);
+    return new Response();
   } catch (error) {
     console.error(error);
     return Response.json({ error: 'Internal server error' }, { status: 500 });
