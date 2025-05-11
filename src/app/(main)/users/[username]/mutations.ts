@@ -43,7 +43,6 @@ export function useUpdateProfileMutation() {
       await queryClient.cancelQueries(queryFilter);
 
       queryClient.setQueriesData<InfiniteData<PostsPage, string | null>>(
-        // @ts-expect-error Type mismatch due to QueryFilters generic type
         queryFilter,
         (oldData) => {
           if (!oldData) return;

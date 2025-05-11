@@ -23,7 +23,6 @@ export default function NotificationButton({
     initialData: initialState,
     refetchInterval: 60 * 1000,
   });
-  console.log(1111, data.unreadCount);
   return (
     <Button
       title="Notifications"

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'stream-chat-react/css/v2/index.css';
+
 body {
   font-family: var(--font-nunito);
 }
@@ -125,5 +127,23 @@ input::-ms-clear {
 }
 
 *::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+#str-chat__channel *::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.dark *::-webkit-scrollbar-track {
+  background: #888;
+}
+
+.dark *::-webkit-scrollbar-thumb {
+  background: rgb(193, 193, 193);
+  border-radius: 4px;
+}
+
+.dark *::-webkit-scrollbar-thumb:hover {
   background: #555;
 }

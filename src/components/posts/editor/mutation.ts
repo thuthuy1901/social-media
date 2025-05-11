@@ -33,7 +33,6 @@ export function useSubmitPostMutation() {
       await queryClient.cancelQueries(queryFilter);
 
       queryClient.setQueriesData<InfiniteData<PostsPage, string | null>>(
-        // @ts-expect-error Type mismatch due to QueryFilters generic type
         queryFilter,
         (oldData) => {
           const firstPage = oldData?.pages[0];
