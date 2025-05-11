@@ -1,4 +1,4 @@
-import { PostData } from '@/lib/types';
+import type { PostData } from '@/lib/types';
 import { useDeletePostMutation } from './mutations';
 import {
   Dialog,

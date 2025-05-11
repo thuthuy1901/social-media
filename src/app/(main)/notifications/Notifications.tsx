@@ -3,7 +3,7 @@
 import InfiniteScrollContainer from '@/components/infinite-scroll-container';
 import PostsLoadingSkeleton from '@/components/posts/PostsLoadingSkeleton';
 import kyInstance from '@/lib/ky';
-import { NotificationsPage } from '@/lib/types';
+import { type NotificationsPage } from '@/lib/types';
 import {
   useInfiniteQuery,
   useMutation,

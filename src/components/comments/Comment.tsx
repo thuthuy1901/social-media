@@ -1,5 +1,5 @@
 import { useSession } from '@/app/(main)/SessionProvider';
-import { CommentData } from '@/lib/types';
+import { type CommentData } from '@/lib/types';
 import { formatRelativeDate } from '@/lib/utils';
 import Link from 'next/link';
 import UserTooltip from '../user-tooltip';

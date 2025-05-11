@@ -1,9 +1,9 @@
 import { useToast } from '@/hooks/use-toast';
 import kyInstance from '@/lib/ky';
-import { LikeInfo } from '@/lib/types';
+import type { LikeInfo } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import {
-  QueryKey,
+  type QueryKey,
   useMutation,
   useQuery,
   useQueryClient,

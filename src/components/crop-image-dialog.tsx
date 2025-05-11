@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Cropper, ReactCropperElement } from 'react-cropper';
+import { Cropper, type ReactCropperElement } from 'react-cropper';
 import {
   Dialog,
   DialogContent,

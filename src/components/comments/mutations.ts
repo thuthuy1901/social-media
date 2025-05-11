@@ -1,7 +1,7 @@
-import { CommentsPage } from '@/lib/types';
+import type { CommentsPage } from '@/lib/types';
 import {
-  InfiniteData,
-  QueryKey,
+  type InfiniteData,
+  type QueryKey,
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query';

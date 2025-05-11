@@ -5,10 +5,10 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { UserData } from '@/lib/types';
+import { type UserData } from '@/lib/types';
 import {
   updateUserProfileSchema,
-  UpdateUserProfileValues,
+  type UpdateUserProfileValues,
 } from '@/lib/validation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -24,7 +24,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import LoadingButton from '@/components/ui/loading-button';
-import Image, { StaticImageData } from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { useRef, useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Camera } from 'lucide-react';

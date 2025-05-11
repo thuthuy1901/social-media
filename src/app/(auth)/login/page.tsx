@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import Image from 'next/image';
 import FormLogin from './LoginForm';
 import Link from 'next/link';

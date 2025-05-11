@@ -7,10 +7,13 @@ import {
 } from '@/components/ui/dialog';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
-import { DefaultStreamChatGenerics, useChatContext } from 'stream-chat-react';
+import {
+  type DefaultStreamChatGenerics,
+  useChatContext,
+} from 'stream-chat-react';
 import { useSession } from '../SessionProvider';
 import useDebouce from '@/hooks/useDebounce';
-import { UserResponse } from 'stream-chat';
+import { type UserResponse } from 'stream-chat';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { Check, Loader2, SearchIcon, X } from 'lucide-react';
 import UserAvatar from '@/components/user-avatar';

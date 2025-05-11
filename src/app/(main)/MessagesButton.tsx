@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import kyInstance from '@/lib/ky';
-import { MessageCountInfo } from '@/lib/types';
+import { type MessageCountInfo } from '@/lib/types';
 import { useQuery } from '@tanstack/react-query';
 import { Mail } from 'lucide-react';
 import Link from 'next/link';

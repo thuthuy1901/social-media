@@ -1,5 +1,5 @@
 'use client';
-import { loginSchema, LoginValue } from '@/lib/validation';
+import { loginSchema, type LoginValue } from '@/lib/validation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {

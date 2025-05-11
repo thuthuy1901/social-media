@@ -3,7 +3,7 @@
 import { lucia } from '@/auth';
 import prisma from '@/lib/prisma';
 import streamServerClient from '@/lib/stream';
-import { signUpSchema, SignUpValues } from '@/lib/validation';
+import { signUpSchema, type SignUpValues } from '@/lib/validation';
 import { hash } from '@node-rs/argon2';
 import { generateIdFromEntropySize } from 'lucia';
 import { isRedirectError } from 'next/dist/client/components/redirect-error';

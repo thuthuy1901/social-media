@@ -1,7 +1,7 @@
 'use server';
 
 import prisma from '@/lib/prisma';
-import { loginSchema, LoginValue } from '@/lib/validation';
+import { loginSchema, type LoginValue } from '@/lib/validation';
 import { isRedirectError } from 'next/dist/client/components/redirect-error';
 import { verify } from '@node-rs/argon2';
 import { lucia } from '@/auth';

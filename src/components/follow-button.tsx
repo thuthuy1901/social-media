@@ -2,8 +2,12 @@
 
 import useFollowerInfo from '@/hooks/useFollowerInfo';
 import kyInstance from '@/lib/ky';
-import { FollowerInfo } from '@/lib/types';
-import { QueryKey, useMutation, useQueryClient } from '@tanstack/react-query';
+import { type FollowerInfo } from '@/lib/types';
+import {
+  type QueryKey,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query';
 import { Button } from './ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslations } from 'next-intl';

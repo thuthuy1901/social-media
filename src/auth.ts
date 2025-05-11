@@ -1,5 +1,5 @@
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
-import { Lucia, Session, User } from 'lucia';
+import { Lucia, type Session, type User } from 'lucia';
 import { cookies } from 'next/headers';
 import { cache } from 'react';
 import prisma from './lib/prisma';

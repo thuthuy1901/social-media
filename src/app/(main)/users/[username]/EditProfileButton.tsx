@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { UserData } from '@/lib/types';
+import { type UserData } from '@/lib/types';
 import { useState } from 'react';
 import EditPropfileDialog from './EditProfileDialog';
 import { useTranslations } from 'next-intl';

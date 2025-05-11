@@ -4,7 +4,7 @@ import { Menu } from 'lucide-react';
 import {
   Channel,
   ChannelHeader,
-  ChannelHeaderProps,
+  type ChannelHeaderProps,
   MessageInput,
   MessageList,
   Window,

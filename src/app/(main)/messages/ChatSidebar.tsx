@@ -1,7 +1,7 @@
 import {
   ChannelList,
   ChannelPreviewMessenger,
-  ChannelPreviewUIComponentProps,
+  type ChannelPreviewUIComponentProps,
   useChatContext,
 } from 'stream-chat-react';
 import { useSession } from '../SessionProvider';

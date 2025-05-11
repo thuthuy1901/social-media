@@ -1,8 +1,8 @@
 import { useSession } from '@/app/(main)/SessionProvider';
-import { PostsPage } from '@/lib/types';
+import type { PostsPage } from '@/lib/types';
 import {
-  InfiniteData,
-  QueryFilters,
+  type InfiniteData,
+  type QueryFilters,
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query';

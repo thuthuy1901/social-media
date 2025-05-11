@@ -1,10 +1,10 @@
 import UserAvatar from '@/components/user-avatar';
-import { NotificationData } from '@/lib/types';
+import { type NotificationData } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { NotificationType } from '@prisma/client';
 import { Heart, MessageSquare, User2 } from 'lucide-react';
 import Link from 'next/link';
-import { JSX } from 'react';
+import { type JSX } from 'react';
 
 interface NotificationProps {
   notification: NotificationData;

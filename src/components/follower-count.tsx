@@ -1,6 +1,6 @@
 'use client';
 import useFollowerInfo from '@/hooks/useFollowerInfo';
-import { FollowerInfo } from '@/lib/types';
+import { type FollowerInfo } from '@/lib/types';
 import { formatNumber } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 

@@ -1,5 +1,5 @@
 'use client';
-import { PostData } from '@/lib/types';
+import type { PostData } from '@/lib/types';
 import { useState } from 'react';
 import {
   DropdownMenu,

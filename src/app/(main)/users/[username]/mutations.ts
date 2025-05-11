@@ -1,9 +1,9 @@
-import { PostsPage } from '@/lib/types';
+import { type PostsPage } from '@/lib/types';
 import { useUploadThing } from '@/lib/uploadthing';
-import { UpdateUserProfileValues } from '@/lib/validation';
+import { type UpdateUserProfileValues } from '@/lib/validation';
 import {
-  InfiniteData,
-  QueryFilters,
+  type InfiniteData,
+  type QueryFilters,
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query';

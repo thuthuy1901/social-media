@@ -1,8 +1,7 @@
 import { useToast } from '@/hooks/use-toast';
-import { PostsPage } from '@/lib/types';
+import type { PostsPage } from '@/lib/types';
 import {
-  InfiniteData,
-  QueryFilters,
+  type InfiniteData,
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query';

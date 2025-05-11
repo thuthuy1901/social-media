@@ -1,14 +1,8 @@
 import { validateRequest } from '@/auth';
-import prisma from '@/lib/prisma';
 import streamServerClient from '@/lib/stream';
-import {
-  MessageCountInfo,
-  notificationsInclude,
-  NotificationsPage,
-} from '@/lib/types';
-import { NextRequest } from 'next/server';
+import { type MessageCountInfo } from '@/lib/types';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const { user } = await validateRequest();
 

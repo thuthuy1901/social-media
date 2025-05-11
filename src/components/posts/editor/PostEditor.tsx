@@ -6,7 +6,7 @@ import UserAvatar from '@/components/user-avatar';
 import { useSession } from '@/app/(main)/SessionProvider';
 import { useSubmitPostMutation } from './mutation';
 import LoadingButton from '@/components/ui/loading-button';
-import useMediaUpload, { Attachment } from './useMediaUpload';
+import useMediaUpload, { type Attachment } from './useMediaUpload';
 import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';

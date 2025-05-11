@@ -1,9 +1,13 @@
 import { cache } from 'react';
 import prisma from '@/lib/prisma';
-import { FollowerInfo, getUserDataSelect, UserData } from '@/lib/types';
+import {
+  type FollowerInfo,
+  getUserDataSelect,
+  type UserData,
+} from '@/lib/types';
 import { notFound } from 'next/navigation';
 import { validateRequest } from '@/auth';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import TrendSidebar from '@/components/trend-sidebar';
 import UserAvatar from '@/components/user-avatar';
 import { formatDate } from 'date-fns';

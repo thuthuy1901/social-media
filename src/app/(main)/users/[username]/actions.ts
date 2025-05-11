@@ -6,7 +6,7 @@ import streamServerClient from '@/lib/stream';
 import { getUserDataSelect } from '@/lib/types';
 import {
   updateUserProfileSchema,
-  UpdateUserProfileValues,
+  type UpdateUserProfileValues,
 } from '@/lib/validation';
 
 export async function updateUserProfile(values: UpdateUserProfileValues) {

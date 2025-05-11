@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import { Button, ButtonProps } from './button';
+import { Button, type ButtonProps } from './button';
 import { Loader } from 'lucide-react';
 
 interface LoadingButtonProps extends ButtonProps {

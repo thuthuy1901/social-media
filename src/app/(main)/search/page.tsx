@@ -1,5 +1,5 @@
 import TrendSidebar from '@/components/trend-sidebar';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import SearchResults from './SearchResults';
 
 interface PageProps {

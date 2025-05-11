@@ -1,7 +1,7 @@
 'use client';
 import { useSession } from '@/app/(main)/SessionProvider';
-import { FollowerInfo, UserData } from '@/lib/types';
-import { PropsWithChildren } from 'react';
+import { type FollowerInfo, type UserData } from '@/lib/types';
+import { type PropsWithChildren } from 'react';
 import {
   Tooltip,
   TooltipContent,

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import TrendSidebar from '@/components/trend-sidebar';
 import Notifications from './Notifications';
 

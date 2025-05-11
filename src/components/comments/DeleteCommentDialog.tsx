@@ -1,4 +1,4 @@
-import { CommentData } from '@/lib/types';
+import type { CommentData } from '@/lib/types';
 import { Button } from '../ui/button';
 import {
   Dialog,

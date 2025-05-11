@@ -1,5 +1,5 @@
 'use client';
-import { PostData } from '@/lib/types';
+import type { PostData } from '@/lib/types';
 import Link from 'next/link';
 import UserAvatar from '../user-avatar';
 import { formatRelativeDate } from '@/lib/utils';
@@ -7,7 +7,7 @@ import { useSession } from '@/app/(main)/SessionProvider';
 import { PostMoreButton } from './PostMoreButton';
 import { Linkify } from '../Linkify';
 import UserTooltip from '../user-tooltip';
-import { Media } from '@prisma/client';
+import type { Media } from '@prisma/client';
 import Image from 'next/image';
 import LikeButton from './LikeButton';
 import BookmarkButton from './BookmarkButton';

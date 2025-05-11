@@ -1,5 +1,5 @@
 'use client';
-import { signUpSchema, SignUpValues } from '@/lib/validation';
+import { signUpSchema, type SignUpValues } from '@/lib/validation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {

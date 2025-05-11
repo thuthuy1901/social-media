@@ -1,6 +1,6 @@
 'use client';
 
-import { Session, User } from 'lucia';
+import type { Session, User } from 'lucia';
 import { createContext, useContext } from 'react';
 
 interface SessionContext {
