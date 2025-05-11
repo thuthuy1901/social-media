@@ -3,7 +3,7 @@
 import { validateRequest } from '@/auth';
 import prisma from '@/lib/prisma';
 import { getCommentDataInclude, type PostData } from '@/lib/types';
-import { createCommentSchema } from '@/lib/validation';
+import { createCommentSchema, editCommentSchema } from '@/lib/validation';
 
 export async function submitComment({
   post,
@@ -63,4 +63,29 @@ export async function deleteComment(id: string) {
   });
 
   return deletedComment;
+}
+
+export async function editComment(input: { id: string; content: string }) {
+  const { user } = await validateRequest();
+
+  if (!user) throw new Error('Unauthorized');
+
+  const { id, content } = editCommentSchema.parse(input);
+
+  const comment = await prisma.comment.findUnique({
+    where: { id },
+  });
+
+  if (!comment) throw new Error('Comment not found');
+  if (comment.userId !== user.id) throw new Error('Unauthorized');
+
+  const updatedComment = await prisma.comment.update({
+    where: { id },
+    data: {
+      content,
+    },
+    include: getCommentDataInclude(user.id),
+  });
+
+  return updatedComment;
 }

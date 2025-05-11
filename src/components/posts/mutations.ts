@@ -6,7 +6,7 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 import { usePathname, useRouter } from 'next/navigation';
-import { deletePost } from './actions';
+import { deletePost, editPost } from './actions';
 
 export function useDeletePostMutation() {
   const { toast } = useToast();
@@ -51,6 +51,50 @@ export function useDeletePostMutation() {
       toast({
         variant: 'destructive',
         description: 'Failed to delete post. Please try again.',
+      });
+    },
+  });
+
+  return mutation;
+}
+
+export function useEditPostMutation() {
+  const { toast } = useToast();
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: editPost,
+    onSuccess: async (updatedPost) => {
+      const queryFilter = { queryKey: ['post-feed'] };
+
+      await queryClient.cancelQueries(queryFilter);
+
+      queryClient.setQueriesData<InfiniteData<PostsPage, string | null>>(
+        queryFilter,
+        (oldData) => {
+          if (!oldData) return;
+
+          return {
+            pageParams: oldData.pageParams,
+            pages: oldData.pages.map((page) => ({
+              nextCursor: page.nextCursor,
+              posts: page.posts.map((p) =>
+                p.id === updatedPost.id ? updatedPost : p,
+              ),
+            })),
+          };
+        },
+      );
+
+      toast({
+        description: 'Post updated',
+      });
+    },
+    onError(error) {
+      console.error(error);
+      toast({
+        variant: 'destructive',
+        description: 'Failed to update post. Please try again.',
       });
     },
   });

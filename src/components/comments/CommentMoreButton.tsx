@@ -1,5 +1,5 @@
 import { type CommentData } from '@/lib/types';
-import { MoreHorizontal, Trash2 } from 'lucide-react';
+import { MoreHorizontal, PenLine, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '../ui/button';
 import {
@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 import DeleteCommentDialog from './DeleteCommentDialog';
+import EditCommentDialog from './EditCommentDialog';
 
 interface CommentMoreButtonProps {
   comment: CommentData;
@@ -20,16 +21,23 @@ export default function CommentMoreButton({
   className,
 }: CommentMoreButtonProps) {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [showEditDialog, setShowEditDialog] = useState(false);
 
   return (
     <>
-      <DropdownMenu>
+      <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
           <Button className={className}>
             <MoreHorizontal className="size-5 text-muted-foreground" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
+          <DropdownMenuItem onClick={() => setShowEditDialog(true)}>
+            <span className="flex items-center gap-3">
+              <PenLine className="size-4" />
+              Edit
+            </span>
+          </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setShowDeleteDialog(true)}>
             <span className="flex items-center gap-3 text-destructive">
               <Trash2 className="size-4" />
@@ -42,6 +50,11 @@ export default function CommentMoreButton({
         comment={comment}
         open={showDeleteDialog}
         onClose={() => setShowDeleteDialog(false)}
+      />
+      <EditCommentDialog
+        comment={comment}
+        open={showEditDialog}
+        onClose={() => setShowEditDialog(false)}
       />
     </>
   );
