@@ -1,15 +1,15 @@
 'use client';
-
 import { logout } from '@/app/(auth)/action';
 import { useQueryClient } from '@tanstack/react-query';
 
-const LogoutComponent = () => {
+const DashBoardAdmin = () => {
   const queryClient = useQueryClient();
-  const handleLogout = () => {
+  const handleLogout = async () => {
     queryClient.clear();
-    logout();
+    logout(true);
   };
-  return <div onClick={handleLogout}>admin</div>;
+
+  return <div onClick={handleLogout}>Logout</div>;
 };
 
-export default LogoutComponent;
+export default DashBoardAdmin;

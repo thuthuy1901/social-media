@@ -4,7 +4,7 @@ import { lucia, validateRequest } from '@/auth';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-export async function logout() {
+export async function logout(isAdmin?: boolean) {
   const { session } = await validateRequest();
 
   if (!session) throw new Error('Unauthorized');
@@ -18,6 +18,8 @@ export async function logout() {
     sessionCookie.value,
     sessionCookie.attributes,
   );
+
+  if (isAdmin) return redirect('/admin/signin');
 
   return redirect('/login');
 }

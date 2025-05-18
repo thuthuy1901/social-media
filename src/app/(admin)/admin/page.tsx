@@ -1,5 +1,5 @@
-import LogoutComponent from './LogoutComponent';
+import DashBoardAdmin from './DashBoardAdmin';
 
-export default function PageAdmin() {
-  return <LogoutComponent />;
+export default function Page() {
+  return <DashBoardAdmin />;
 }
