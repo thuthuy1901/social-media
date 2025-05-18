@@ -3,5 +3,5 @@ export default async function Layout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div>{children}</div>;
+  return <main>{children}</main>;
 }

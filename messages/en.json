@@ -25,6 +25,9 @@
     "title": "Delete post?",
     "content": "Are you sure you want to delete this post? This action cannot be undone."
   },
+  "edit-post-box": {
+    "title": "Edit post!"
+  },
   "profile": {
     "since": "Member since",
     "post": "Posts",
@@ -55,11 +58,13 @@
       "message": "Messages",
       "bookmark": "Bookmarks"
     },
+
     "post-editor": {
       "button": "Create",
       "for-you": "For You",
       "following": "Following",
-      "placeholder": "What's your new today?"
+      "placeholder": "What's your new today?",
+      "not-found": "This user hasn't posted anything yet"
     },
     "follow-box": {
       "title": "Who to follow"
@@ -69,5 +74,55 @@
       "post": "post",
       "posts": "posts"
     }
+  },
+  "status-blog": {
+    "like": "likes",
+    "cmt": "comments",
+    "delete": "Delete",
+    "edit": "Edit",
+    "error-media-type": "Unsupported media type"
+  },
+  "error-post": {
+    "not-found-follow": "No posts found. Start following people to see their posts here.",
+    "loading": "An error occurred while loading posts",
+    "not-found-for-you": "No one has posted anything yet"
+  },
+  "sign-in": {
+    "google": "Sign in with Google"
+  },
+  "bookmark": {
+    "title": "Bookmarks",
+    "not-found": "You don&apos;t have any bookmarked yet.",
+    "loading": "Xảy ra lỗi khi tải bài viết!"
+  },
+  "message": {
+    "title": "Messages",
+    "not-found-user": "No users found. Try a different name.",
+    "error-loading": "An error occurred with loading users.",
+    "new-chat": "New chat",
+    "start-chat": "Start chat"
+  },
+  "notification": {
+    "title": "Notifications",
+    "not-found": "You don&apos;t have any notifications yet.",
+    "loading": "An error occurred while loading notifications.",
+    "follow": "followed you",
+    "comment": "commented on your post",
+    "like": "liked your post"
+  },
+  "posts": {
+    "error": "You&apos;re not authorized to view this page.",
+    "about": "About this user"
+  },
+  "search": {
+    "title": "Search results for",
+    "not-found": "No posts found for this query.",
+    "error-loading": "An error occurred while loading posts."
+  },
+  "username": {
+    "post": "posts",
+    "error-user": "You&apos;re not authorized to view this page.",
+    "error-post": "This user hasn&apos;t posted anything yet",
+    "error-loading": "An error occurred while loading posts"
   }
 }

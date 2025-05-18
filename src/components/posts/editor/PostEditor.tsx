@@ -8,7 +8,6 @@ import { useSubmitPostMutation } from './mutation';
 import LoadingButton from '@/components/ui/loading-button';
 import useMediaUpload, { type Attachment } from './useMediaUpload';
 import { useRef } from 'react';
-import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { ImageIcon, Loader2, X } from 'lucide-react';
 import Image from 'next/image';
@@ -21,7 +20,6 @@ interface PostEditorProps {
 
 export default function PostEditor({ button }: PostEditorProps) {
   const { user } = useSession();
-  const t = useTranslations('home.post-editor');
 
   const mutation = useSubmitPostMutation();
 
@@ -47,7 +45,7 @@ export default function PostEditor({ button }: PostEditorProps) {
         italic: false,
       }),
       Placeholder.configure({
-        placeholder: t('placeholder'),
+        placeholder: '',
       }),
     ],
     immediatelyRender: false,

@@ -28,7 +28,7 @@ export default function Page() {
         </div>
         <FormLogin />
         <p className="text-center text-sm group mt-2">
-          Dont have account?{' '}
+          Don&apos;t have account?{' '}
           <Link
             href="/signup"
             className="italic text-green-second font-bold group-hover:text-green-main dark:group-hover:text-white/50"

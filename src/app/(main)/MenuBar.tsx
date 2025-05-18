@@ -6,12 +6,14 @@ import Link from 'next/link';
 import NotificationButton from './NoticationsButton';
 import MessagesButton from './MessagesButton';
 import streamServerClient from '@/lib/stream';
+import { getTranslations } from 'next-intl/server';
 
 interface MenuBarProps {
   className?: string;
 }
 
 const MenuBar = async ({ className = '' }: MenuBarProps) => {
+  const t = await getTranslations('home');
   const { user } = await validateRequest();
   if (!user) return null;
 
@@ -27,18 +29,36 @@ const MenuBar = async ({ className = '' }: MenuBarProps) => {
 
   return (
     <section className={className}>
-      <Button title="Home" className="justify-start" variant="navBarItem">
+      <Button
+        title={t('menu-bar.home')}
+        className="justify-start"
+        variant="navBarItem"
+      >
         <Link href="/" className="flex items-center gap-2">
           <Home />
-          <span className="hidden lg:inline font-semibold">Home</span>
+          <span className="hidden lg:inline font-semibold">
+            {t('menu-bar.home')}
+          </span>
         </Link>
       </Button>
-      <NotificationButton initialState={{ unreadCount: unreadNotification }} />
-      <MessagesButton initialState={{ unreadCount: unreadMessagesCount }} />
-      <Button title="Bookmarks" className="justify-start" variant="navBarItem">
+      <NotificationButton
+        initialState={{ unreadCount: unreadNotification }}
+        content={t('menu-bar.notification')}
+      />
+      <MessagesButton
+        initialState={{ unreadCount: unreadMessagesCount }}
+        content={t('menu-bar.message')}
+      />
+      <Button
+        title={t('menu-bar.bookmark')}
+        className="justify-start"
+        variant="navBarItem"
+      >
         <Link href="/bookmarks" className="flex items-center gap-2">
           <Bookmark />
-          <span className="hidden lg:inline font-semibold">Bookmark</span>
+          <span className="hidden lg:inline font-semibold">
+            {t('menu-bar.bookmark')}
+          </span>
         </Link>
       </Button>
     </section>

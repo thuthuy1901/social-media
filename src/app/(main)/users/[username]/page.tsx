@@ -54,15 +54,12 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: PageProps) {
+  const t = await getTranslations('username');
   const { username } = await params;
   const { user: loggedInUser } = await validateRequest();
 
   if (!loggedInUser)
-    return (
-      <p className="text-destructive">
-        You&apos;re not authorized to view this page.
-      </p>
-    );
+    return <p className="text-destructive">{t('error-user')}</p>;
 
   const user = await getUser(username, loggedInUser.id);
 
@@ -71,11 +68,15 @@ export default async function Page({ params }: PageProps) {
       <div className="w-full min-w-0">
         <UserProfile user={user} loggedInUserId={loggedInUser.id} />
         <div className="~mt-3/6 rounded-md border bg-bg-main shadow-md ~p-3/5">
-          <h2 className="text-center ~text-xl/2xl font-bold">
-            {user.displayName}&apos; posts
-          </h2>
+          <h2 className="text-center ~text-xl/2xl font-bold">{t('post')}</h2>
         </div>
-        <UserPosts userId={user.id} />
+        <UserPosts
+          userId={user.id}
+          language={{
+            errorPost: t('error-post'),
+            errorLoading: t('error-loading'),
+          }}
+        />
       </div>
       <TrendSidebar />
     </main>

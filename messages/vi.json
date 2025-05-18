@@ -25,6 +25,9 @@
     "title": "Xóa bài viết?",
     "content": "Bạn chắc chắn muốn xóa? Thao tác này không thẻ hoàn tác!"
   },
+  "edit-post-box": {
+    "title": "Sửa bài viết!"
+  },
   "profile": {
     "since": "Tham gia từ",
     "post": "Bài viết",
@@ -55,6 +58,7 @@
       "message": "Tin nhắn",
       "bookmark": "Dấu trang"
     },
+
     "post-editor": {
       "button": "Đăng bài",
       "for-you": "Cho bạn",
@@ -69,5 +73,55 @@
       "post": "bài viết",
       "posts": "bài viết"
     }
+  },
+  "status-blog": {
+    "like": "thích",
+    "cmt": "bình luận",
+    "delete": "Xóa",
+    "edit": "Sửa",
+    "error-media-type": "Không hỗ trợ kiểu này"
+  },
+  "error-post": {
+    "not-found-follow": "Không có bài viết nào. Theo dõi để có bài viết ở đây!",
+    "loading": "Xảy ra lỗi khi tải bài viết!",
+    "not-found-for-you": "Không ai đăng bài ở đây"
+  },
+  "sign-in": {
+    "google": "Đăng nhập bằng Google"
+  },
+  "bookmark": {
+    "title": "Dấu trang",
+    "not-found": "Không có bài viết nào ở đây!",
+    "loading": "Xảy ra lỗi khi tải bài viết!"
+  },
+  "message": {
+    "title": "Tin nhắn",
+    "not-found-user": "Không có người dùng",
+    "error-loading": "Xảy ra lỗi khi tải danh sách người dùng",
+    "new-chat": "Tạo mới",
+    "start-chat": "Bắt đầu"
+  },
+  "notification": {
+    "title": "Thông báo",
+    "not-found": "Không có thông báo nào!",
+    "loading": "Xảy ra lỗi khi tải thông báo!",
+    "follow": "theo dõi",
+    "comment": "bình luận bài viết của bạn",
+    "like": "thích bài viết của bạn"
+  },
+  "posts": {
+    "error": "Bạn không được phép xem trang này.",
+    "about": "Thông tin"
+  },
+  "search": {
+    "title": "Tìm kiếm cho",
+    "not-found": "Không có bài viết nào phù hợp",
+    "error-loading": "Xảy ra lỗi khi tải bài viết"
+  },
+  "username": {
+    "post": "Bài viết",
+    "error-user": "Bạn không được phép vào đây",
+    "error-post": "Không có bài viết nào ở đây",
+    "error-loading": "Xảy ra lỗi khi tải bài viết"
   }
 }

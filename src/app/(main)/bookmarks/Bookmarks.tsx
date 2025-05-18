@@ -7,8 +7,10 @@ import kyInstance from '@/lib/ky';
 import { type PostsPage } from '@/lib/types';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Loader2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function Bookmarks() {
+  const t = useTranslations('bookmark');
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteQuery({
       queryKey: ['post-feed', 'bookmarks'],
@@ -32,16 +34,14 @@ export default function Bookmarks() {
   if (status === 'success' && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground ~mt-3/6">
-        You don&apos;t have any bookmarked yet.
+        {t('not-found')}
       </p>
     );
   }
 
   if (status === 'error') {
     return (
-      <p className="text-center text-destructive ~mt-3/6">
-        An error occurred while loading bookmarks.
-      </p>
+      <p className="text-center text-destructive ~mt-3/6">{t('loading')}</p>
     );
   }
 

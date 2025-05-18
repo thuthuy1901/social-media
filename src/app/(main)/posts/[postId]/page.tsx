@@ -8,6 +8,7 @@ import prisma from '@/lib/prisma';
 import { getPostDataInclude, type UserData } from '@/lib/types';
 import { Loader2 } from 'lucide-react';
 import { type Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { cache, Suspense } from 'react';
@@ -44,15 +45,12 @@ export async function generateMetadata({
   };
 }
 export default async function Page({ params }: PageProps) {
+  const t = await getTranslations('posts');
   const { postId } = await params;
   const { user } = await validateRequest();
 
   if (!user) {
-    return (
-      <p className="text-destructive">
-        You&apos;re not authorized to view this page.
-      </p>
-    );
+    return <p className="text-destructive">{t('error')}</p>;
   }
 
   const post = await getPost(postId, user.id);
@@ -64,7 +62,7 @@ export default async function Page({ params }: PageProps) {
       </div>
       <div className="sticky top-[5.25rem] hidden lg:block h-fit w-80">
         <Suspense fallback={<Loader2 className="mx-auto animate-spin" />}>
-          <UserInfoSidebar user={post.user} />
+          <UserInfoSidebar user={post.user} content={t('about')} />
         </Suspense>
       </div>
     </main>
@@ -73,16 +71,17 @@ export default async function Page({ params }: PageProps) {
 
 interface UserInfoSidebarProps {
   user: UserData;
+  content: string;
 }
 
-async function UserInfoSidebar({ user }: UserInfoSidebarProps) {
+async function UserInfoSidebar({ user, content }: UserInfoSidebarProps) {
   const { user: loggedInUser } = await validateRequest();
 
   if (!loggedInUser) return null;
 
   return (
     <div className="bg-bg-main border rounded-md shadow-md ~p-3/5">
-      <div className="text-xl font-bold text-text-title">About this user</div>
+      <div className="text-xl font-bold text-text-title">{content}</div>
       <UserTooltip user={user}>
         <Link
           href={`/users/${user.username}`}

@@ -10,9 +10,13 @@ import { Loader2 } from 'lucide-react';
 
 interface SearchResultsProps {
   query: string;
+  language: {
+    notFound: string;
+    errorLoading: string;
+  };
 }
 
-export default function SearchResults({ query }: SearchResultsProps) {
+export default function SearchResults({ query, language }: SearchResultsProps) {
   const {
     data,
     fetchNextPage,
@@ -44,17 +48,13 @@ export default function SearchResults({ query }: SearchResultsProps) {
 
   if (status === 'success' && !posts.length && !hasNextPage) {
     return (
-      <p className="text-center text-muted-foreground">
-        No posts found for this query.
-      </p>
+      <p className="text-center text-muted-foreground">{language.notFound}</p>
     );
   }
 
   if (status === 'error') {
     return (
-      <p className="text-center text-destructive">
-        An error occurred while loading posts.
-      </p>
+      <p className="text-center text-destructive">{language.errorLoading}</p>
     );
   }
 

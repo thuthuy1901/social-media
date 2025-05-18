@@ -10,9 +10,13 @@ import { Loader2 } from 'lucide-react';
 
 interface UserPostsProps {
   userId: string;
+  language: {
+    errorPost: string;
+    errorLoading: string;
+  };
 }
 
-export default function UserPosts({ userId }: UserPostsProps) {
+export default function UserPosts({ userId, language }: UserPostsProps) {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteQuery({
       queryKey: ['post-feed', 'user-posts', userId],
@@ -36,7 +40,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
   if (status === 'success' && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground ~mt-3/6">
-        This user hasn&apos;t posted anything yet
+        {language.errorPost}
       </p>
     );
   }
@@ -44,7 +48,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
   if (status === 'error') {
     return (
       <p className="text-center text-destructive ~mt-3/6">
-        An error occurred while loading posts
+        {language.errorPost}
       </p>
     );
   }

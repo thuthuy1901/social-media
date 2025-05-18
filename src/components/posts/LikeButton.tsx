@@ -12,10 +12,15 @@ import { Heart } from 'lucide-react';
 
 interface LikeButtonProps {
   postId: string;
+  content: string;
   initialState: LikeInfo;
 }
 
-export default function LikeButton({ postId, initialState }: LikeButtonProps) {
+export default function LikeButton({
+  postId,
+  initialState,
+  content,
+}: LikeButtonProps) {
   const { toast } = useToast();
 
   const queryClient = useQueryClient();
@@ -67,7 +72,7 @@ export default function LikeButton({ postId, initialState }: LikeButtonProps) {
         )}
       />
       <span className="text-sm font-medium tabular-nums">
-        {data.likes} <span className="hidden sm:inline">likes</span>
+        {data.likes} <span className="hidden sm:inline">{content}</span>
       </span>
     </button>
   );

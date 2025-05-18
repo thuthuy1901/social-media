@@ -12,8 +12,10 @@ import {
 import { Loader2 } from 'lucide-react';
 import Notification from './Notification';
 import { useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function Notifications() {
+  const t = useTranslations('');
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteQuery({
       queryKey: ['notifications'],
@@ -55,16 +57,14 @@ export default function Notifications() {
   if (status === 'success' && !notifications.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground ~mt-3/6">
-        You don&apos;t have any notifications yet.
+        {t('not-found')}
       </p>
     );
   }
 
   if (status === 'error') {
     return (
-      <p className="text-center text-destructive ~mt-3/6">
-        An error occurred while loading notifications.
-      </p>
+      <p className="text-center text-destructive ~mt-3/6">{t('loading')}</p>
     );
   }
 
@@ -79,6 +79,9 @@ export default function Notifications() {
         <Notification
           key={`notification-item-${notification.id}`}
           notification={notification}
+          follow={t('follow')}
+          comment={t('comment')}
+          like={t('like')}
         />
       ))}
 

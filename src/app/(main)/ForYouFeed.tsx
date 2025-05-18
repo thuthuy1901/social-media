@@ -7,8 +7,10 @@ import kyInstance from '@/lib/ky';
 import { type PostsPage } from '@/lib/types';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Loader2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function ForYouFeed() {
+  const t = useTranslations('error-post');
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteQuery({
       queryKey: ['post-feed', 'for-you'],
@@ -32,16 +34,14 @@ export default function ForYouFeed() {
   if (status === 'success' && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground ~mt-3/6">
-        No one has posted anything yet
+        {t('not-found-for-you')}
       </p>
     );
   }
 
   if (status === 'error') {
     return (
-      <p className="text-center text-destructive ~mt-3/6">
-        An error occurred while loading posts
-      </p>
+      <p className="text-center text-destructive ~mt-3/6">{t('loading')}</p>
     );
   }
 

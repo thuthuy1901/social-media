@@ -9,10 +9,12 @@ import Link from 'next/link';
 
 interface NotificationButtonProps {
   initialState: NotificationCountInfo;
+  content: string;
 }
 
 export default function NotificationButton({
   initialState,
+  content,
 }: NotificationButtonProps) {
   const { data } = useQuery({
     queryKey: ['unread-notification-count'],
@@ -24,11 +26,7 @@ export default function NotificationButton({
     refetchInterval: 60 * 1000,
   });
   return (
-    <Button
-      title="Notifications"
-      className="justify-start"
-      variant="navBarItem"
-    >
+    <Button title={content} className="justify-start" variant="navBarItem">
       <Link href="/notifications" className="flex items-center gap-2">
         <div className="relative">
           <Bell />
@@ -38,7 +36,7 @@ export default function NotificationButton({
             </span>
           )}
         </div>
-        <span className="hidden lg:inline font-semibold">Notification</span>
+        <span className="hidden lg:inline font-semibold">{content}</span>
       </Link>
     </Button>
   );

@@ -14,12 +14,14 @@ import BookmarkButton from './BookmarkButton';
 import { useState } from 'react';
 import { MessageSquare } from 'lucide-react';
 import Comments from '../comments/Comments';
+import { useTranslations } from 'next-intl';
 
 interface Postprops {
   post: PostData;
 }
 
 export default function Post({ post }: Postprops) {
+  const t = useTranslations('status-blog');
   const { user } = useSession();
   const [showComments, setShowComments] = useState(false);
 
@@ -54,6 +56,10 @@ export default function Post({ post }: Postprops) {
           <PostMoreButton
             post={post}
             className="opacity-0 transition-opacity duration-200 group-hover/post:opacity-100"
+            contentLanguage={{
+              buttonEdit: t('edit'),
+              buttonDelete: t('delete'),
+            }}
           />
         )}
       </div>
@@ -64,7 +70,10 @@ export default function Post({ post }: Postprops) {
       </Linkify>
       {!!post.attachments.length && (
         <div className="~mt-3/5">
-          <MediaPreviews attachments={post.attachments} />
+          <MediaPreviews
+            attachments={post.attachments}
+            error={t('error-media-type')}
+          />
         </div>
       )}
       <hr className="mt-5" />
@@ -75,11 +84,13 @@ export default function Post({ post }: Postprops) {
             likes: post._count.likes,
             isLikedByUser: post.likes.some((like) => like.userId === user.id),
           }}
+          content={t('like')}
         />
         <CommentButton
           isShow={showComments}
           post={post}
           onClick={() => setShowComments(!showComments)}
+          content={t('cmt')}
         />
         <BookmarkButton
           postId={post.id}
@@ -102,15 +113,16 @@ export default function Post({ post }: Postprops) {
 
 interface MediaPreviewsProps {
   attachments: Media[];
+  error: string;
 }
 
-function MediaPreviews({ attachments }: MediaPreviewsProps) {
+function MediaPreviews({ attachments, error }: MediaPreviewsProps) {
   return (
     <div
       className={`flex flex-col gap-3 ${attachments.length > 1 ? 'sm:grid sm:grid-cols-2' : ''}`}
     >
       {attachments.map((item) => (
-        <MediaPreview key={item.id} media={item} />
+        <MediaPreview key={item.id} media={item} error={error} />
       ))}
     </div>
   );
@@ -118,9 +130,10 @@ function MediaPreviews({ attachments }: MediaPreviewsProps) {
 
 interface MediaPreviewsProp {
   media: Media;
+  error: string;
 }
 
-function MediaPreview({ media }: MediaPreviewsProp) {
+function MediaPreview({ media, error }: MediaPreviewsProp) {
   if (media.type === 'IMAGE') {
     return (
       <Image
@@ -144,16 +157,17 @@ function MediaPreview({ media }: MediaPreviewsProp) {
     );
   }
 
-  return <p className="text-text-second">Unsupported media type</p>;
+  return <p className="text-text-second">{error}</p>;
 }
 
 interface CommentButtonProps {
   isShow: boolean;
   post: PostData;
   onClick: () => void;
+  content: string;
 }
 
-function CommentButton({ post, onClick, isShow }: CommentButtonProps) {
+function CommentButton({ post, onClick, isShow, content }: CommentButtonProps) {
   return (
     <button onClick={onClick} className="flex items-center gap-2">
       <MessageSquare
@@ -161,7 +175,7 @@ function CommentButton({ post, onClick, isShow }: CommentButtonProps) {
       />
       <span className="text-sm font-medium tabular-nums">
         {post._count.comments}{' '}
-        <span className="hidden sm:inline">comments</span>
+        <span className="hidden sm:inline">{content}</span>
       </span>
     </button>
   );

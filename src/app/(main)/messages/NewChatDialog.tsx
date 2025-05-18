@@ -18,6 +18,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { Check, Loader2, SearchIcon, X } from 'lucide-react';
 import UserAvatar from '@/components/user-avatar';
 import LoadingButton from '@/components/ui/loading-button';
+import { useTranslations } from 'next-intl';
 
 interface NewChatDialogProps {
   onOpenChange: (open: boolean) => void;
@@ -28,6 +29,7 @@ export default function NewChatDialog({
   onOpenChange,
   onChatCreated,
 }: NewChatDialogProps) {
+  const t = useTranslations('message');
   const { client, setActiveChannel } = useChatContext();
   const { toast } = useToast();
   const { user: loggedInUser } = useSession();
@@ -92,7 +94,7 @@ export default function NewChatDialog({
     <Dialog open onOpenChange={onOpenChange}>
       <DialogContent className="bg-background p-0">
         <DialogHeader className="~px-3/6 ~pt-3/6">
-          <DialogTitle>New chat</DialogTitle>
+          <DialogTitle>{t('new-chat')}</DialogTitle>
         </DialogHeader>
         <div>
           <div className="group relative">
@@ -138,13 +140,13 @@ export default function NewChatDialog({
               ))}
             {isSuccess && !data.users.length && (
               <p className="~text-xs/base text-center ~mt-3/6">
-                No users found. Try a different name.
+                {t('not-found-user')}
               </p>
             )}
             {isFetching && <Loader2 className="mx-auto my-3 animate-spin" />}
             {isError && (
               <p className="~text-xs/base text-center ~mt-3/6">
-                An error occurred with loading users.
+                {t('error-loading')}
               </p>
             )}
           </div>
@@ -158,7 +160,7 @@ export default function NewChatDialog({
             variant="transformToBottomBox"
             className="dark:bg-green-main dark:before:border-green-main"
           >
-            Start chat
+            {t('start-chat')}
           </LoadingButton>
         </DialogFooter>
       </DialogContent>

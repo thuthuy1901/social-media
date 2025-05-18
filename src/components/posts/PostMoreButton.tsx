@@ -10,16 +10,22 @@ import {
 import { Button } from '../ui/button';
 import { MoreHorizontal, PencilLine, Trash2 } from 'lucide-react';
 import { DeletePostDialog } from './DeletePostDialog';
-import { useTranslations } from 'next-intl';
 import { EditPostDialog } from './EditPostDialog';
 
 interface PostMoreButtonProps {
   post: PostData;
   className?: string;
+  contentLanguage: {
+    buttonEdit: string;
+    buttonDelete: string;
+  };
 }
 
-export function PostMoreButton({ post, className }: PostMoreButtonProps) {
-  const t = useTranslations('button');
+export function PostMoreButton({
+  post,
+  className,
+  contentLanguage,
+}: PostMoreButtonProps) {
   const [showDelete, setShowDelete] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
 
@@ -34,12 +40,12 @@ export function PostMoreButton({ post, className }: PostMoreButtonProps) {
         <DropdownMenuContent>
           <DropdownMenuItem onClick={() => setShowEdit(true)}>
             <div className="flex items-center gap-3 font-semibold">
-              <PencilLine className="size-4" /> Edit
+              <PencilLine className="size-4" /> {contentLanguage.buttonEdit}
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => setShowDelete(true)}>
             <div className="flex items-center gap-3 text-destructive font-semibold">
-              <Trash2 className="size-4" /> {t('delete')}
+              <Trash2 className="size-4" /> {contentLanguage.buttonDelete}
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -48,13 +54,13 @@ export function PostMoreButton({ post, className }: PostMoreButtonProps) {
         open={showDelete}
         onClose={() => setShowDelete(false)}
         post={post}
-        button={t('delete')}
+        button={contentLanguage.buttonDelete}
       />
       <EditPostDialog
         open={showEdit}
         onClose={() => setShowEdit(false)}
         post={post}
-        button="Submit"
+        button={contentLanguage.buttonEdit}
       />
     </>
   );

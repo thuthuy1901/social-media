@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { useCallback, useEffect, useState } from 'react';
 import NewChatDialog from './NewChatDialog';
 import { useQueryClient } from '@tanstack/react-query';
+import { useTranslations } from 'next-intl';
 
 interface ChatSidebarProps {
   open: boolean;
@@ -83,6 +84,7 @@ interface MenuHeaderProps {
 }
 
 function MenuHeader({ onClose }: MenuHeaderProps) {
+  const t = useTranslations('message');
   const [showNewChatDialog, setShowNewChatDialog] = useState(false);
   return (
     <>
@@ -91,7 +93,7 @@ function MenuHeader({ onClose }: MenuHeaderProps) {
           <Button onClick={onClose} className="md:hidden">
             <X className="size-5" />
           </Button>
-          <h1 className="~text-lg/xl font-bold">Messages</h1>
+          <h1 className="~text-lg/xl font-bold">{t('title')}</h1>
           <Button
             title="Start new chat"
             onClick={() => setShowNewChatDialog(true)}

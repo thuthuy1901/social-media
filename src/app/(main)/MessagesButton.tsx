@@ -9,9 +9,13 @@ import Link from 'next/link';
 
 interface MessagesButtonProps {
   initialState: MessageCountInfo;
+  content: string;
 }
 
-export default function MessagesButton({ initialState }: MessagesButtonProps) {
+export default function MessagesButton({
+  initialState,
+  content,
+}: MessagesButtonProps) {
   const { data } = useQuery({
     queryKey: ['unread-messages-count'],
     queryFn: () =>
@@ -21,7 +25,7 @@ export default function MessagesButton({ initialState }: MessagesButtonProps) {
   });
 
   return (
-    <Button title="Messages" className="justify-start" variant="navBarItem">
+    <Button title={content} className="justify-start" variant="navBarItem">
       <Link href="/messages" className="flex items-center gap-2">
         <div className="relative">
           <Mail />
@@ -31,7 +35,7 @@ export default function MessagesButton({ initialState }: MessagesButtonProps) {
             </span>
           )}
         </div>
-        <span className="hidden lg:inline font-semibold">Message</span>
+        <span className="hidden lg:inline font-semibold">{content}</span>
       </Link>
     </Button>
   );

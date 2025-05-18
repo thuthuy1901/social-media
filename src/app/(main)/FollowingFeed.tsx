@@ -7,8 +7,10 @@ import kyInstance from '@/lib/ky';
 import { type PostsPage } from '@/lib/types';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { Loader2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function FollowingFeed() {
+  const t = useTranslations('error-post');
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
     useInfiniteQuery({
       queryKey: ['post-feed', 'following'],
@@ -32,16 +34,14 @@ export default function FollowingFeed() {
   if (status === 'success' && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground ~mt-3/6">
-        No posts found. Start following people to see their posts here.
+        {t('not-found-follow')}
       </p>
     );
   }
 
   if (status === 'error') {
     return (
-      <p className="text-center text-destructive ~mt-3/6">
-        An error occurred while loading posts
-      </p>
+      <p className="text-center text-destructive ~mt-3/6">{t('loading')}</p>
     );
   }
 

@@ -13,6 +13,7 @@ import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Placeholder from '@tiptap/extension-placeholder';
 import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 interface EditPostDialogProps {
   post: PostData;
@@ -27,6 +28,7 @@ export function EditPostDialog({
   onClose,
   button,
 }: EditPostDialogProps) {
+  const t = useTranslations('edit-post-box');
   const mutation = useEditPostMutation();
 
   function handleOpenChange(open: boolean) {
@@ -58,7 +60,7 @@ export function EditPostDialog({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-text-title">Edit Post</DialogTitle>
+          <DialogTitle className="text-text-title">{t('title')}</DialogTitle>
           <DialogDescription>
             <div className="w-full">
               <EditorContent
@@ -83,7 +85,6 @@ export function EditPostDialog({
               )
             }
             loading={mutation.isPending}
-            // onClick={() => console.log(post)}
           >
             {button}
           </LoadingButton>

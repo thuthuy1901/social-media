@@ -8,27 +8,35 @@ import { type JSX } from 'react';
 
 interface NotificationProps {
   notification: NotificationData;
+  follow: string;
+  comment: string;
+  like: string;
 }
 
-export default function Notification({ notification }: NotificationProps) {
+export default function Notification({
+  notification,
+  like,
+  comment,
+  follow,
+}: NotificationProps) {
   const notificationTypeMap: Record<
     NotificationType,
     { message: string; icon: JSX.Element; href: string }
   > = {
     FOLLOW: {
-      message: `${notification.issuer.displayName} followed you`,
+      message: `${notification.issuer.displayName} ${follow}`,
       icon: <User2 className="~size-5/7 text-text-title fill-text-title" />,
       href: `/users/${notification.issuer.username}`,
     },
     COMMENT: {
-      message: `${notification.issuer.displayName} commented on your post`,
+      message: `${notification.issuer.displayName} ${comment}`,
       icon: (
         <MessageSquare className="~size-5/7 text-text-title fill-text-title" />
       ),
       href: `/posts/${notification.postId}`,
     },
     LIKE: {
-      message: `${notification.issuer.displayName} liked your post`,
+      message: `${notification.issuer.displayName} ${like}`,
       icon: <Heart className="~size-5/7 text-text-title fill-text-title" />,
       href: `/posts/${notification.postId}`,
     },

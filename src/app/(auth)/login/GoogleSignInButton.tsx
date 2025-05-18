@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
+import { useTranslations } from 'next-intl';
 
 export default function GoogleSignInButton() {
+  const t = useTranslations('sign-in');
   return (
     <Button
       className="bg-white text-black hover:bg-gray-100 hover:text-black my-3"
@@ -8,7 +10,7 @@ export default function GoogleSignInButton() {
     >
       <a href="/login/google" className="flex w-full items-center gap-2">
         <GoogleIcon />
-        Sign in with Google
+        {t('google')}
       </a>
     </Button>
   );
